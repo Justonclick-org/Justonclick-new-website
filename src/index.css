@@ -1,0 +1,612 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+/* @font-face {
+  font-family: 'SFUIText';
+  src: url('./assets/fonts/SFUIText-Regular.otf') format('opentype');
+} */
+
+/* @font-face {
+  font-family: 'SFUIText';
+  src: url('./assets/fonts/FontsFree-Net-SF-UI-Display-Regular-1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SfSemibold';
+  src: url('./assets/fonts/sf-ui-display-semibold-58646eddcae92.otf') format('opentype');
+}
+
+html, body {
+  font-family: 'SFUIText', sans-serif !important;
+} */
+
+
+
+/* Justonclick brand theme — derived from the logo (blue + orange) */
+
+:root {
+  --joc-sky: #bae6fd;
+  --joc-blue: #38bdf8;
+  --joc-blue-dark: #0ea5e9;
+  --joc-blue-light: #eaf7ff;
+  --joc-orange: #fb923c;
+  --joc-orange-dark: #f97316;
+  --joc-orange-light: #fff6ed;
+
+  --joc-ink: #1b2b40;
+  --joc-body: #5a6e85;
+  --joc-line: #e9f0f7;
+  --joc-surface: #ffffff;
+  --joc-surface-alt: #f8fbff;
+
+  --joc-gradient: linear-gradient(135deg, var(--joc-sky) 0%, var(--joc-blue) 42%, var(--joc-orange) 100%);
+  --joc-shadow-sm: 0 4px 18px rgba(56, 189, 248, 0.09);
+  --joc-shadow-md: 0 18px 44px rgba(56, 189, 248, 0.14);
+  --joc-radius: 16px;
+}
+
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--joc-body);
+  background: var(--joc-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--joc-ink);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Shared reveal-on-scroll animation */
+.joc-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.joc-reveal.joc-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joc-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Shared corner bubble decoration (all cards) ---------- */
+.joc-bubble {
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.22), rgba(56, 189, 248, 0.05) 70%);
+  pointer-events: none;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease;
+}
+
+.joc-bubble::before,
+.joc-bubble::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.joc-bubble::before {
+  inset: 22px;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+.joc-bubble::after {
+  width: 16px;
+  height: 16px;
+  left: 6px;
+  bottom: 2px;
+  background: var(--joc-orange);
+  opacity: 0.55;
+  animation: joc-bubble-float 4.5s ease-in-out infinite;
+}
+
+.joc-bubble-orange {
+  background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.24), rgba(249, 115, 22, 0.05) 70%);
+}
+.joc-bubble-orange::before {
+  border-color: rgba(249, 115, 22, 0.3);
+}
+.joc-bubble-orange::after {
+  background: var(--joc-blue);
+}
+
+/* bottom-left companion bubble */
+.joc-bubble-bl {
+  top: auto;
+  right: auto;
+  bottom: -40px;
+  left: -40px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.55;
+}
+
+*:hover > .joc-bubble {
+  transform: scale(1.35) rotate(18deg);
+}
+
+@keyframes joc-bubble-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* ---------- Reveal variants — one animation flavour per section ---------- */
+.joc-reveal.joc-rv-left {
+  transform: translateX(-46px);
+}
+.joc-reveal.joc-rv-right {
+  transform: translateX(46px);
+}
+.joc-reveal.joc-rv-zoom {
+  transform: scale(0.9);
+}
+.joc-reveal.joc-rv-flip {
+  transform: perspective(900px) rotateX(-16deg) translateY(28px);
+}
+.joc-reveal.joc-rv-tilt {
+  transform: perspective(900px) rotateY(14deg) translateX(26px);
+}
+.joc-reveal.joc-rv-blur {
+  filter: blur(10px);
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s ease,
+    filter 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.joc-reveal.joc-rv-blur.joc-visible {
+  filter: blur(0);
+}
+.joc-reveal.joc-rv-skew {
+  transform: skewY(4deg) translateY(34px);
+}
+.joc-reveal.joc-rv-drop {
+  transform: translateY(-34px);
+}
+.joc-reveal.joc-rv-spin {
+  transform: rotate(-6deg) scale(0.92);
+}
+
+.joc-reveal.joc-visible {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joc-bubble::after {
+    animation: none;
+  }
+  .joc-reveal[class*="joc-rv-"] {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ================================================================
+   Per-section card decorations
+   The shared .joc-bubble node is restyled per section so no two
+   sections use the same inside-card decoration.
+   ================================================================ */
+
+/* --- Home: stats -> thin concentric rings --- */
+.jochome-stat .joc-bubble {
+  background: none;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+}
+.jochome-stat .joc-bubble::before {
+  inset: 16px;
+  border: 1px dashed rgba(249, 115, 22, 0.5);
+}
+.jochome-stat .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: service cards -> corner wedge --- */
+.jochome-card .joc-bubble {
+  top: 0;
+  right: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 0 22px 0 100%;
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.35), rgba(56, 189, 248, 0.08));
+}
+.jochome-card .joc-bubble::before {
+  display: none;
+}
+.jochome-card .joc-bubble::after {
+  width: 8px;
+  height: 8px;
+  right: 18px;
+  left: auto;
+  top: 16px;
+  bottom: auto;
+  background: var(--joc-orange);
+  opacity: 0.9;
+}
+
+/* --- Home: why-choose-us -> diagonal stripes --- */
+.jochome-why .joc-bubble {
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 70px;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(56, 189, 248, 0.22) 0 6px,
+    transparent 6px 12px
+  );
+  mask-image: linear-gradient(to left, #000, transparent);
+}
+.jochome-why .joc-bubble::before,
+.jochome-why .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: featured products -> soft glow blob, bottom right --- */
+.jochome-product .joc-bubble {
+  top: auto;
+  right: -70px;
+  bottom: -70px;
+  left: auto;
+  width: 190px;
+  height: 190px;
+  filter: blur(14px);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.28), transparent 70%);
+}
+.jochome-product .joc-bubble::before,
+.jochome-product .joc-bubble::after {
+  display: none;
+}
+.jochome-product .joc-bubble.joc-bubble-bl {
+  right: auto;
+  left: -70px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%);
+}
+
+/* --- Home: industries -> micro dot grid --- */
+.jochome-industry .joc-bubble {
+  top: 8px;
+  right: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.6) 1.6px, transparent 1.6px);
+  background-size: 9px 9px;
+  opacity: 0.8;
+}
+.jochome-industry .joc-bubble::before,
+.jochome-industry .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: technology tiles -> underline sweep --- */
+.jochome-tech .joc-bubble {
+  top: auto;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: auto;
+  height: 3px;
+  border-radius: 0;
+  background: var(--joc-gradient);
+  opacity: 0.55;
+}
+.jochome-tech .joc-bubble::before,
+.jochome-tech .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: methodology steps -> quarter arc --- */
+.jochome-step .joc-bubble {
+  top: -30px;
+  right: -30px;
+  width: 110px;
+  height: 110px;
+  background: none;
+  border: 10px solid rgba(249, 115, 22, 0.16);
+}
+.jochome-step .joc-bubble::before {
+  inset: 10px;
+  border: 2px dotted rgba(56, 189, 248, 0.4);
+}
+.jochome-step .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: outcomes -> stacked bars --- */
+.jochome-outcome .joc-bubble {
+  top: 14px;
+  right: 14px;
+  width: 46px;
+  height: 34px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to top,
+    rgba(56, 189, 248, 0.45) 0 30%,
+    transparent 30% 40%,
+    rgba(125, 211, 252, 0.5) 40% 68%,
+    transparent 68% 78%,
+    rgba(249, 115, 22, 0.45) 78% 100%
+  );
+}
+.jochome-outcome .joc-bubble::before,
+.jochome-outcome .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: case studies -> rotated diamond outline --- */
+.jochome-case .joc-bubble {
+  top: 16px;
+  right: 16px;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: none;
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  transform: rotate(45deg);
+}
+.jochome-case .joc-bubble::before {
+  inset: 12px;
+  border-radius: 6px;
+  background: rgba(249, 115, 22, 0.22);
+  border: none;
+}
+.jochome-case .joc-bubble::after {
+  display: none;
+}
+.jochome-case:hover > .joc-bubble {
+  transform: rotate(105deg) scale(1.1);
+}
+
+/* --- Home: testimonials -> oversized quote mark --- */
+.jochome-quote .joc-bubble {
+  top: 10px;
+  right: 18px;
+  width: auto;
+  height: auto;
+  background: none;
+}
+.jochome-quote .joc-bubble::before {
+  position: static;
+  display: block;
+  content: "\201D";
+  border: none;
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 0.8;
+  color: rgba(56, 189, 248, 0.28);
+}
+.jochome-quote .joc-bubble::after {
+  display: none;
+}
+
+/* --- Home: blog posts -> folded corner tag --- */
+.jochome-post .joc-bubble {
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  background: none;
+  border-top: 46px solid rgba(249, 115, 22, 0.22);
+  border-left: 46px solid transparent;
+}
+.jochome-post .joc-bubble::before,
+.jochome-post .joc-bubble::after {
+  display: none;
+}
+
+/* --- About: story / presence -> soft halo --- */
+.jocabout-story .joc-bubble,
+.jocabout-presence .joc-bubble {
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.32), transparent 70%);
+  filter: blur(8px);
+}
+.jocabout-story .joc-bubble::before,
+.jocabout-presence .joc-bubble::before,
+.jocabout-story .joc-bubble::after,
+.jocabout-presence .joc-bubble::after {
+  display: none;
+}
+
+/* --- About: values cards -> plus mark --- */
+.jocabout-card .joc-bubble {
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background:
+    linear-gradient(rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.55)) center / 2px 100% no-repeat,
+    linear-gradient(rgba(249, 115, 22, 0.55), rgba(249, 115, 22, 0.55)) center / 100% 2px no-repeat;
+}
+.jocabout-card .joc-bubble::before,
+.jocabout-card .joc-bubble::after {
+  display: none;
+}
+
+/* --- About: team cards -> half ring --- */
+.jocabout-team .joc-bubble {
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: none;
+  border: 3px solid rgba(56, 189, 248, 0.3);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.jocabout-team .joc-bubble::before {
+  inset: 18px;
+  border: 3px solid rgba(249, 115, 22, 0.28);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.jocabout-team .joc-bubble::after {
+  display: none;
+}
+
+/* --- Products: banners -> concentric orbit --- */
+.jocproducts-banner .joc-bubble {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  width: 150px;
+  height: 150px;
+}
+.jocproducts-banner .joc-bubble::before {
+  inset: 30px;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+}
+.jocproducts-banner .joc-bubble::after {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Products: module cards -> dotted grid square --- */
+.jocproducts-module .joc-bubble {
+  top: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  background-image: radial-gradient(rgba(249, 115, 22, 0.5) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+.jocproducts-module .joc-bubble::before,
+.jocproducts-module .joc-bubble::after {
+  display: none;
+}
+
+/* --- Products: list panels -> corner slash --- */
+.jocproducts-panel .joc-bubble {
+  top: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 0;
+  background: linear-gradient(200deg, rgba(56, 189, 248, 0.28) 0 42%, transparent 42%);
+}
+.jocproducts-panel .joc-bubble::before,
+.jocproducts-panel .joc-bubble::after {
+  display: none;
+}
+
+/* --- Products: roadmap -> dashed diamond --- */
+.jocproducts-road .joc-bubble {
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background: none;
+  border: 2px dashed rgba(249, 115, 22, 0.45);
+  transform: rotate(45deg);
+}
+.jocproducts-road .joc-bubble::before,
+.jocproducts-road .joc-bubble::after {
+  display: none;
+}
+.jocproducts-road:hover > .joc-bubble {
+  transform: rotate(135deg) scale(1.05);
+}
+
+/* --- Products: FAQ -> vertical accent ticks --- */
+.jocproducts-faq .joc-bubble {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6px;
+  height: auto;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(56, 189, 248, 0.5) 0 8px,
+    transparent 8px 16px
+  );
+}
+.jocproducts-faq .joc-bubble::before,
+.jocproducts-faq .joc-bubble::after {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *:hover > .joc-bubble {
+    transform: none;
+  }
+}
+
+/* Sections with a single deliberate decoration: drop the second bubble */
+.jochome-card .joc-bubble-bl,
+.jochome-why .joc-bubble-bl,
+.jochome-industry .joc-bubble-bl,
+.jochome-tech .joc-bubble-bl,
+.jochome-step .joc-bubble-bl,
+.jochome-outcome .joc-bubble-bl,
+.jochome-case .joc-bubble-bl,
+.jochome-quote .joc-bubble-bl,
+.jochome-post .joc-bubble-bl,
+.jocabout-card .joc-bubble-bl,
+.jocabout-team .joc-bubble-bl,
+.jocproducts-module .joc-bubble-bl,
+.jocproducts-panel .joc-bubble-bl,
+.jocproducts-road .joc-bubble-bl,
+.jocproducts-faq .joc-bubble-bl {
+  display: none;
+}
+
+
+.joc-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.joc-reveal.joc-visible {
+  opacity: 1;
+  transform: none;
+}

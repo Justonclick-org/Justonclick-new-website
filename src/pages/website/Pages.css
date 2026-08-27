@@ -1,0 +1,200 @@
+/* Shared inner-page shell — unique prefix: jocpage- */
+
+.jocpage-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0 4rem;
+  background:
+    radial-gradient(720px 420px at 10% -20%, var(--joc-blue-light) 0%, transparent 62%),
+    radial-gradient(560px 380px at 92% 0%, var(--joc-orange-light) 0%, transparent 60%),
+    #fff;
+}
+
+.jocpage-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 70% at 40% 20%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(70% 70% at 40% 20%, #000 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.jocpage-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 60ch;
+}
+
+.jocpage-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  color: var(--joc-blue-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: var(--joc-shadow-sm);
+}
+
+.jocpage-title {
+  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  line-height: 1.12;
+  margin: 1.2rem 0 1rem;
+}
+
+.jocpage-title span {
+  background: var(--joc-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.jocpage-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.jocpage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.jocpage-btn,
+.jocpage-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.82rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.94rem;
+  transition:
+    transform 0.28s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.28s ease;
+}
+
+.jocpage-btn {
+  background: var(--joc-orange);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.26);
+}
+.jocpage-btn:hover {
+  background: var(--joc-orange-dark);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.jocpage-btn-ghost {
+  background: #fff;
+  color: var(--joc-ink);
+  border: 1px solid var(--joc-line);
+}
+.jocpage-btn-ghost:hover {
+  color: var(--joc-blue);
+  border-color: var(--joc-blue);
+  transform: translateY(-3px);
+}
+
+/* highlight cards */
+.jocpage-body {
+  padding: 4.5rem 0 5.5rem;
+}
+
+.jocpage-card {
+  position: relative;
+  height: 100%;
+  padding: 1.7rem;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.jocpage-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: var(--joc-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jocpage-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--joc-shadow-md);
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
+.jocpage-card:hover::after {
+  transform: scaleX(1);
+}
+
+.jocpage-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+  transition:
+    transform 0.4s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.jocpage-card:hover .jocpage-card-icon {
+  transform: rotate(-6deg) scale(1.07);
+  background: var(--joc-blue);
+  color: #fff;
+}
+
+.jocpage-card h3 {
+  font-size: 1.04rem;
+  margin-bottom: 0.45rem;
+}
+
+.jocpage-card p {
+  font-size: 0.94rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.jocpage-note {
+  margin-top: 3rem;
+  padding: 1.5rem 1.7rem;
+  border-radius: 20px;
+  border: 1px dashed var(--joc-line);
+  background: var(--joc-surface-alt);
+  font-size: 0.94rem;
+  color: var(--joc-body);
+}
+
+@media (max-width: 767.98px) {
+  .jocpage-hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+  .jocpage-body {
+    padding: 3rem 0 4rem;
+  }
+}

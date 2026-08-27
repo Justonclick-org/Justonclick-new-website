@@ -1,0 +1,155 @@
+/* Site footer — unique prefix: jocfoot- */
+
+.jocfoot-wrap {
+  position: relative;
+  background: #0e1c2e;
+  color: #a9bcd1;
+  padding: 4.5rem 0 0;
+  overflow: hidden;
+}
+
+.jocfoot-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--joc-gradient);
+}
+
+.jocfoot-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.jocfoot-glow-a {
+  background: var(--joc-blue);
+  top: -160px;
+  left: -120px;
+}
+
+.jocfoot-glow-b {
+  background: var(--joc-orange);
+  bottom: -220px;
+  right: -140px;
+}
+
+.jocfoot-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.jocfoot-logo {
+  height: 42px;
+  width: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.jocfoot-about {
+  margin-top: 1.1rem;
+  font-size: 0.94rem;
+  line-height: 1.75;
+  max-width: 34ch;
+}
+
+.jocfoot-title {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.jocfoot-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jocfoot-list li {
+  margin-bottom: 0.6rem;
+}
+
+.jocfoot-list a,
+.jocfoot-contact a {
+  color: #a9bcd1;
+  font-size: 0.94rem;
+  transition:
+    color 0.22s ease,
+    padding-left 0.22s ease;
+}
+
+.jocfoot-list a:hover {
+  color: var(--joc-orange);
+  padding-left: 6px;
+}
+
+.jocfoot-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.94rem;
+}
+
+.jocfoot-contact li {
+  margin-bottom: 0.7rem;
+}
+
+.jocfoot-contact a:hover {
+  color: var(--joc-orange);
+}
+
+.jocfoot-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.jocfoot-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  color: #d6e3f1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.jocfoot-social a:hover {
+  background: var(--joc-blue);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.jocfoot-bottom {
+  margin-top: 3.5rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 0.86rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jocfoot-bottom a {
+  color: #a9bcd1;
+}
+
+.jocfoot-bottom a:hover {
+  color: var(--joc-orange);
+}

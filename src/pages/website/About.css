@@ -1,0 +1,377 @@
+/* About Us page — unique prefix: jocabout- */
+
+.jocabout-wrap {
+  animation: jocabout-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  overflow-x: hidden;
+}
+
+@keyframes jocabout-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- sections ---------- */
+.jocabout-section {
+  padding: 4.5rem 0;
+  position: relative;
+}
+
+.jocabout-section-alt {
+  background: var(--joc-surface-alt);
+  border-block: 1px solid var(--joc-line);
+}
+
+.jocabout-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--joc-orange-dark);
+  margin-bottom: 0.7rem;
+}
+
+.jocabout-heading {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin-bottom: 0.9rem;
+}
+
+.jocabout-text {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--joc-body);
+}
+
+/* ---------- 3.1 story ---------- */
+.jocabout-story {
+  position: relative;
+  overflow: hidden;
+  padding: 2.2rem;
+  border-radius: 26px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+}
+
+.jocabout-story::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: var(--joc-gradient);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jocabout-story.joc-visible::after {
+  transform: scaleY(1);
+}
+
+/* ---------- 3.2 / 3.3 vision & mission ---------- */
+.jocabout-pillar {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 24px;
+  color: #fff;
+  box-shadow: var(--joc-shadow-md);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jocabout-pillar:hover {
+  transform: translateY(-8px);
+}
+
+.jocabout-pillar-blue {
+  background: linear-gradient(135deg, var(--joc-blue) 0%, var(--joc-blue-dark) 100%);
+}
+
+.jocabout-pillar-orange {
+  background: linear-gradient(135deg, var(--joc-orange) 0%, var(--joc-orange-dark) 100%);
+}
+
+.jocabout-pillar h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.jocabout-pillar p {
+  margin: 0;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.jocabout-pillar-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  animation: jocabout-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes jocabout-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
+  }
+}
+
+/* ---------- generic about card ---------- */
+.jocabout-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 1.7rem;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.jocabout-card:hover {
+  transform: translateY(-9px);
+  box-shadow: var(--joc-shadow-md);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.jocabout-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  background: var(--joc-orange-light);
+  color: var(--joc-orange-dark);
+  transition:
+    transform 0.45s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.jocabout-card:hover .jocabout-card-icon {
+  transform: rotate(-8deg) scale(1.08);
+  background: var(--joc-orange);
+  color: #fff;
+}
+
+.jocabout-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.45rem;
+}
+
+.jocabout-card p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.jocabout-card-blue .jocabout-card-icon {
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+}
+.jocabout-card-blue:hover .jocabout-card-icon {
+  background: var(--joc-blue);
+  color: #fff;
+}
+.jocabout-card-blue:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* ---------- 3.9 team ---------- */
+.jocabout-team {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 1.8rem;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.jocabout-team::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: var(--joc-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jocabout-team:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--joc-shadow-md);
+}
+.jocabout-team:hover::after {
+  transform: scaleX(1);
+}
+
+.jocabout-team-fn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- 3.6 timeline ---------- */
+.jocabout-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.jocabout-timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(var(--joc-blue), var(--joc-orange));
+}
+
+.jocabout-tl-item {
+  position: relative;
+  padding: 0 0 1.6rem 0.4rem;
+}
+
+.jocabout-tl-item::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--joc-orange);
+  animation: jocabout-dot 2.6s ease-in-out infinite;
+}
+
+@keyframes jocabout-dot {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.22);
+  }
+}
+
+.jocabout-tl-item strong {
+  display: block;
+  color: var(--joc-ink);
+  font-size: 1rem;
+}
+
+.jocabout-tl-item span {
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+/* ---------- 3.7 presence ---------- */
+.jocabout-presence {
+  position: relative;
+  overflow: hidden;
+  padding: 2.2rem;
+  border-radius: 26px;
+  background:
+    radial-gradient(520px 300px at 88% 10%, var(--joc-blue-light) 0%, transparent 65%),
+    #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+}
+
+.jocabout-presence-ring {
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  animation: jocabout-spin 22s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes jocabout-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- note & cta ---------- */
+.jocabout-note {
+  margin-top: 1.6rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 18px;
+  border: 1px dashed var(--joc-line);
+  background: var(--joc-surface-alt);
+  font-size: 0.92rem;
+}
+
+.jocabout-cta {
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 2rem;
+  border-radius: 28px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--joc-blue-dark) 0%, var(--joc-blue) 55%, var(--joc-orange) 140%);
+  color: #fff;
+  box-shadow: var(--joc-shadow-md);
+}
+
+.jocabout-cta h2 {
+  color: #fff;
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+}
+
+.jocabout-cta p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 60ch;
+  margin: 0.8rem auto 1.8rem;
+  line-height: 1.8;
+}
+
+.jocabout-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+@media (max-width: 767.98px) {
+  .jocabout-section {
+    padding: 3rem 0;
+  }
+}

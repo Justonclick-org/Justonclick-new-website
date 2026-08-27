@@ -1,0 +1,118 @@
+.admin-layout-wrapper {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* light gray background - change as needed */
+}
+
+.admin-layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ----------------- Sidebar ----------------- */
+.admin-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background-color: #1e293b; /* dark slate */
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #334155;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid #334155;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background-color: #10b981 !important; 
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.brand-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0.75rem;
+}
+
+.nav-link-custom {
+  display: flex;
+  align-items: center;
+  color: #94a3b8 !important;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link-custom:hover {
+  background-color: rgba(51, 65, 85, 0.5) !important;
+  color: #f1f5f9 !important;
+}
+
+.nav-link-custom.active {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  font-weight: 600 !important;
+}
+
+.sidebar-footer {
+  padding: 1.25rem;
+  border-top: 1px solid #334155;
+}
+
+.logout-btn {
+  color: #94a3b8 !important;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: rgba(51, 65, 85, 0.5) !important;
+  color: #f1f5f9 !important;
+  text-decoration: none;
+}
+
+/* ----------------- Main Content ----------------- */
+.main-content {
+  flex: 1;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+.content-container {
+  max-width: 1400px; /* optional - prevents content from stretching too wide */
+}
+
+/* Responsive - collapse sidebar on small screens if needed */
+@media (max-width: 992px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+}
+
+/* Optional: mobile sidebar toggle can be added later */
