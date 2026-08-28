@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Justonclick-new-website/static/css/main.fc9ff815.css",
+    "main.js": "/Justonclick-new-website/static/js/main.b9fef4e2.js",
+    "static/js/453.2bb32486.chunk.js": "/Justonclick-new-website/static/js/453.2bb32486.chunk.js",
+    "static/media/home-hero.png": "/Justonclick-new-website/static/media/home-hero.5aa4bb7e5160574e29d5.png",
+    "static/media/services_img.jpg": "/Justonclick-new-website/static/media/services_img.bbe66579ca75d67ddbf7.jpg",
+    "index.html": "/Justonclick-new-website/index.html",
+    "main.fc9ff815.css.map": "/Justonclick-new-website/static/css/main.fc9ff815.css.map",
+    "main.b9fef4e2.js.map": "/Justonclick-new-website/static/js/main.b9fef4e2.js.map",
+    "453.2bb32486.chunk.js.map": "/Justonclick-new-website/static/js/453.2bb32486.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc9ff815.css",
+    "static/js/main.b9fef4e2.js"
+  ]
+}
