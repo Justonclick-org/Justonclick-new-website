@@ -2,23 +2,21 @@
 
 ## Deploy to GitHub Pages
 
-This project deploys automatically with GitHub Actions when `main` is pushed.
+This project deploys with the `gh-pages` package using `npm run deploy`.
 
-1. In GitHub, open **Settings > Pages** and set **Source** to **GitHub Actions**.
-2. Push the project to `main`:
+1. In GitHub, open **Settings > Pages**.
+2. Set **Source** to **Deploy from a branch**.
+3. Select the `gh-pages` branch and `/ (root)` folder.
+4. Deploy the project:
 
 ```bash
-git add .
-git commit -m "Deploy React app to GitHub Pages"
-git push origin main
+gh auth switch
+gh auth setup-git
+npm run deploy
 ```
 
 The site will be available at:
 
 `https://justonclick-org.github.io/Justonclick-new-website/`
 
-To run the deployment manually with GitHub CLI:
-
-```bash
-gh workflow run deploy-pages.yml
-```
+The selected Git/GitHub account must have **Write** access to this repository. `npm run deploy` builds the app first, then publishes the `build` folder to the `gh-pages` branch.
