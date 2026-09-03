@@ -83,6 +83,7 @@
     background 0.25s ease,
     color 0.25s ease,
     box-shadow 0.28s ease;
+  text-decoration: none;
 }
 
 .jocpage-btn {

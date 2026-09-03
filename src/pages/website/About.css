@@ -16,7 +16,88 @@
   }
 }
 
+/* ---------- hero visual ---------- */
+.jocabout-hero-copy {
+  text-align: left;
+  margin: 0;
+  max-width: 100%;
+}
+
+.jocabout-hero .jocpage-actions {
+  justify-content: flex-start;
+}
+
+.jocabout-hero-visual {
+  position: relative;
+  border-radius: 28px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(249, 115, 22, 0.28));
+  box-shadow: var(--joc-shadow-md);
+}
+
+.jocabout-hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  animation: jocabout-float 7s ease-in-out infinite;
+}
+
+@keyframes jocabout-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.jocabout-hero-chip {
+  position: absolute;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--joc-ink);
+  animation: jocabout-float 5.5s ease-in-out infinite;
+}
+
+.jocabout-hero-chip-1 {
+  left: -12px;
+  top: 18%;
+  color: var(--joc-blue-dark);
+}
+
+.jocabout-hero-chip-2 {
+  right: -10px;
+  bottom: 14%;
+  color: var(--joc-orange-dark);
+  animation-delay: 1.4s;
+}
+
+@media (max-width: 991.98px) {
+  .jocabout-hero-visual {
+    margin-top: 1.5rem;
+  }
+  .jocabout-hero-chip-1,
+  .jocabout-hero-chip-2 {
+    left: auto;
+    right: 10px;
+  }
+  .jocabout-hero-chip-1 {
+    left: 10px;
+    right: auto;
+  }
+}
+
 /* ---------- sections ---------- */
+
 .jocabout-section {
   padding: 4.5rem 0;
   position: relative;

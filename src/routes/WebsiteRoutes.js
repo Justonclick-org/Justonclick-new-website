@@ -7,6 +7,8 @@ import About from "../pages/website/About";
 import Contact from "../pages/website/Contact";
 import Services from "../pages/website/Services";
 import Products from "../pages/website/Products";
+import Technologies from "../pages/website/Technologies"; 
+import CaseStudy from "../pages/website/CaseStudy";
 
 
 const WebsiteRoutes = () => {
@@ -49,6 +51,22 @@ const WebsiteRoutes = () => {
         element={
           <WebsiteLayout>
             <Products />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="/technologies"
+        element={
+          <WebsiteLayout>
+            <Technologies />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="/case-studies"
+        element={
+          <WebsiteLayout>
+            <CaseStudy />
           </WebsiteLayout>
         }
       />

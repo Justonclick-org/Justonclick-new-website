@@ -84,6 +84,7 @@
   transition:
     color 0.22s ease,
     padding-left 0.22s ease;
+    text-decoration: none !important;
 }
 
 .jocfoot-list a:hover {

@@ -19,6 +19,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import aboutHero from "../../components/assets/about-hero.jpg";
 import "./About.css";
 import "./Pages.css"; // or adjust path if Page.css is elsewhere
 
@@ -118,24 +119,40 @@ function About() {
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
         <Container>
-          <div className="jocpage-hero-inner">
-            <span className="jocpage-eyebrow joc-reveal joc-rv-drop">About Justonclick</span>
-            <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-              <span>Who we are, and why you can trust us with this</span>
-            </h1>
-            <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
-              One continuous page covering our story, purpose, values, people, and standards — the
-              company behind the products we run in daily production.
-            </p>
-            <div className="jocpage-actions joc-reveal joc-rv-zoom" style={delay(3)}>
-              <Link to="/contact" className="jocpage-btn">
-                Schedule Consultation <ArrowRight size={17} />
-              </Link>
-              <Link to="/products" className="jocpage-btn-ghost">
-                See our products
-              </Link>
-            </div>
-          </div>
+          <Row className="g-5 align-items-center">
+            <Col lg={6}>
+              <div className="jocpage-hero-inner jocabout-hero-copy">
+                <span className="jocpage-eyebrow joc-reveal joc-rv-drop">About Justonclick</span>
+                <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
+                  <span>Who we are, and why you can trust us with this</span>
+                </h1>
+                <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
+                  One continuous page covering our story, purpose, values, people, and standards —
+                  the company behind the products we run in daily production.
+                </p>
+                <div className="jocpage-actions joc-reveal joc-rv-zoom" style={delay(3)}>
+                  <Link to="/contact" className="jocpage-btn">
+                    Schedule Consultation <ArrowRight size={17} />
+                  </Link>
+                  <Link to="/products" className="jocpage-btn-ghost">
+                    See our products
+                  </Link>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6}>
+              <div className="jocabout-hero-visual joc-reveal joc-rv-zoom" style={delay(2)}>
+                <img
+                  src={aboutHero}
+                  alt="Justonclick product and engineering team collaborating in the studio"
+                  width={1280}
+                  height={960}
+                />
+                <span className="jocabout-hero-chip jocabout-hero-chip-1">Products we run</span>
+                <span className="jocabout-hero-chip jocabout-hero-chip-2">Pune, India</span>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </section>
 

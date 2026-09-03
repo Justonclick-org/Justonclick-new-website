@@ -40,10 +40,12 @@
 }
 
 @keyframes jochome-pulse {
+
   0%,
   100% {
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.16);
   }
+
   50% {
     box-shadow: 0 0 0 7px rgba(249, 115, 22, 0.05);
   }
@@ -83,6 +85,7 @@
     background 0.25s ease,
     color 0.25s ease,
     box-shadow 0.28s ease;
+  text-decoration: none;
 }
 
 .jochome-btn-primary::after,
@@ -108,6 +111,7 @@
 .jochome-btn-ghost svg {
   transition: transform 0.3s ease;
 }
+
 .jochome-btn-primary:hover svg,
 .jochome-btn-secondary:hover svg,
 .jochome-btn-ghost:hover svg {
@@ -119,6 +123,7 @@
   color: #fff;
   box-shadow: 0 12px 26px rgba(249, 115, 22, 0.28);
 }
+
 .jochome-btn-primary:hover {
   background: var(--joc-orange-dark);
   color: #fff;
@@ -131,6 +136,7 @@
   color: #fff;
   box-shadow: 0 12px 26px rgba(56, 189, 248, 0.26);
 }
+
 .jochome-btn-secondary:hover {
   background: var(--joc-blue-dark);
   color: #fff;
@@ -143,6 +149,7 @@
   color: var(--joc-ink);
   border: 1px solid var(--joc-line);
 }
+
 .jochome-btn-ghost:hover {
   color: var(--joc-blue);
   border-color: var(--joc-blue);
@@ -165,6 +172,7 @@
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease,
     border-color 0.4s ease;
+  text-decoration: none;
 }
 
 /* soft radial glow that follows the card on hover */
@@ -173,11 +181,9 @@
   position: absolute;
   z-index: -1;
   inset: -40%;
-  background: radial-gradient(
-    340px 340px at var(--jochome-mx, 50%) var(--jochome-my, 0%),
-    rgba(56, 189, 248, 0.14),
-    transparent 62%
-  );
+  background: radial-gradient(340px 340px at var(--jochome-mx, 50%) var(--jochome-my, 0%),
+      rgba(56, 189, 248, 0.14),
+      transparent 62%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -203,16 +209,15 @@
 .jochome-card:hover::before {
   opacity: 1;
 }
+
 .jochome-card:hover::after {
   transform: scaleX(1);
 }
 
 .jochome-card-accent::before {
-  background: radial-gradient(
-    340px 340px at var(--jochome-mx, 50%) var(--jochome-my, 0%),
-    rgba(249, 115, 22, 0.16),
-    transparent 62%
-  );
+  background: radial-gradient(340px 340px at var(--jochome-mx, 50%) var(--jochome-my, 0%),
+      rgba(249, 115, 22, 0.16),
+      transparent 62%);
 }
 
 .jochome-card-icon {
@@ -357,10 +362,12 @@
 }
 
 @keyframes jochome-float {
+
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   50% {
     transform: translate3d(0, -26px, 0) scale(1.07);
   }
@@ -411,10 +418,12 @@
 }
 
 @keyframes jochome-shift {
+
   0%,
   100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -688,7 +697,7 @@
     transform 0.3s ease;
 }
 
-.jochome-why-row + .jochome-why-row {
+.jochome-why-row+.jochome-why-row {
   margin-top: 0.55rem;
 }
 
@@ -806,6 +815,7 @@
   transition:
     background 0.25s ease,
     gap 0.25s ease;
+  text-decoration: none;
 }
 
 .jochome-product-link:hover {
@@ -837,6 +847,7 @@
     border-color 0.3s ease,
     color 0.3s ease,
     box-shadow 0.3s ease;
+    text-decoration: none;
 }
 
 .jochome-industry:hover {
@@ -864,6 +875,7 @@
     color 0.32s ease,
     box-shadow 0.32s ease,
     border-color 0.32s ease;
+  text-decoration: none;
 }
 
 .jochome-tech-fill {
@@ -882,7 +894,7 @@
 
 .jochome-tech:hover {
   transform: translateY(-5px);
-  color: #fff;
+  color: var(--joc-blue-dark);
   border-color: transparent;
   box-shadow: var(--joc-shadow-md);
 }
@@ -1192,18 +1204,22 @@
   .jochome-section {
     padding: 3.75rem 0;
   }
+
   .jochome-hero {
     padding: 3.5rem 0 4rem;
   }
+
   .jochome-quote {
     padding: 1.8rem;
   }
+
   .jochome-card,
   .jochome-why,
   .jochome-step,
   .jochome-product {
     padding: 1.4rem;
   }
+
   .jochome-hero-chip {
     display: none;
   }
@@ -1229,6 +1245,7 @@
   top: -22px;
   right: -22px;
 }
+
 .jochome-tech .joc-bubble::before {
   inset: 14px;
 }
@@ -1247,6 +1264,7 @@
 .jochome-card .joc-bubble {
   z-index: 0;
 }
+
 .jochome-card-index {
   z-index: 1;
   right: 1.9rem;
