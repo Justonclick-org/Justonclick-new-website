@@ -123,11 +123,24 @@ const CATEGORIES = [
   },
 ];
 
+const CLOUD_NOTES = {
+  AWS: "Landing zones, serverless and container workloads, and cost-tuned managed services.",
+  Azure: "Microsoft-centric estates — .NET apps, Entra ID identity, and hybrid connectivity.",
+  "Google Cloud": "Data and analytics workloads, GKE clusters, and managed AI services.",
+};
+
+const TEST_FOCUS = {
+  Jest: "Unit & integration tests",
+  Cypress: "End-to-end web flows",
+  Selenium: "Cross-browser regression",
+  Playwright: "Multi-browser automation",
+};
+
 const STATS = [
   { icon: Layers, value: "40+", label: "Technologies in the stack" },
   { icon: Gauge, value: "9", label: "Capability categories" },
-  { icon: Lock, value: "100%", label: "Secure by design" },
-  { icon: BadgeCheck, value: "Real", label: "Production-proven tools" },
+  { icon: Cloud, value: "3", label: "Cloud platforms supported" },
+  { icon: BadgeCheck, value: "24/7", label: "Production support" },
 ];
 
 function CategoryItems({ cat }) {
@@ -196,7 +209,7 @@ function CategoryItems({ cat }) {
               <span className="joctech-cloud-blob" />
               <Cloud size={34} />
               <h4>{t}</h4>
-              <p>Architecture, migration & managed operations.</p>
+              <p>{CLOUD_NOTES[t]}</p>
             </div>
           ))}
         </div>
@@ -287,7 +300,7 @@ function CategoryItems({ cat }) {
                 <BadgeCheck size={20} />
               </span>
               <span className="joctech-test-name">{t}</span>
-              <span className="joctech-test-status">In every pipeline</span>
+              <span className="joctech-test-status">{TEST_FOCUS[t]}</span>
             </div>
           ))}
         </div>
@@ -318,7 +331,7 @@ function Technologies() {
               </h1>
               <p className="joctech-hero-text joc-reveal">
                 Every entry below is a real, production-proven capability — the same stack
-                referenced across our Services and Industries pages. No filler, no
+                referenced across our Services and Case Studies pages. No filler, no
                 buzzwords: tools we ship with every day.
               </p>
               <div className="joctech-hero-actions joc-reveal">

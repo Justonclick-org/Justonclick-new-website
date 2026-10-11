@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import logo from "../assets/Justonclick-final.png";
+import { CONTACT } from "../../utils/constants";
 import "./Footer.css";
 
 const COMPANY = [
@@ -13,11 +14,11 @@ const COMPANY = [
 ];
 
 const EXPERTISE = [
-  { label: "Custom Software Development", to: "/services" },
-  { label: "Cloud Solutions", to: "/services" },
-  { label: "AI & Machine Learning", to: "/services" },
-  { label: "Mobile App Development", to: "/services" },
-  { label: "Dedicated Teams", to: "/services" },
+  { label: "Custom Software Development", to: "/services#custom-software-development" },
+  { label: "Cloud Solutions", to: "/services#cloud-solutions" },
+  { label: "AI & Machine Learning", to: "/services#ai-machine-learning" },
+  { label: "Mobile App Development", to: "/services#mobile-app-development" },
+  { label: "Dedicated Teams", to: "/services#dedicated-development-teams" },
   { label: "Technologies", to: "/technologies" },
 ];
 
@@ -34,8 +35,8 @@ function Footer() {
             <img src={logo} alt="Justonclick logo" className="jocfoot-logo" />
             <p className="jocfoot-about">
               Justonclick designs, builds, and operates custom software, cloud
-              infrastructure, and AI-driven systems — and runs its own products
-              in production every day.
+              infrastructure, and AI-driven systems — and runs its own HRMS &
+              Payroll platform in production every day.
             </p>
             <div className="jocfoot-social">
               <a
@@ -103,18 +104,14 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://trading.justonclick.in/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Justonclick Trading Algo
-                </a>
+                <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
               </li>
               <li>
-                <a href="mailto:hello@justonclick.in">hello@justonclick.in</a>
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
               </li>
-              <li>India · Serving clients globally</li>
+              <li>
+                {CONTACT.addressLines[0]}, {CONTACT.addressLines[1]}
+              </li>
             </ul>
           </Col>
         </Row>

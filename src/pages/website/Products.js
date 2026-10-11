@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import {
-  Activity,
-  AlarmClock,
   ArrowRight,
   BarChart3,
   Boxes,
@@ -13,16 +11,12 @@ import {
   Cpu,
   ExternalLink,
   FileSpreadsheet,
-  Gauge,
   HelpCircle,
   Image as ImageIcon,
-  Layers,
   Lock,
   Plug,
   Rocket,
-  ShieldCheck,
   ShoppingCart,
-  Smartphone,
   Sparkles,
   Target,
   Truck,
@@ -31,6 +25,8 @@ import {
   Wallet,
 } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { CONTACT } from "../../utils/constants";
+import hrmsShot from "../../components/assets/products/hrms-home.jpg";
 import "./Products.css";
 import "./Pages.css";
 
@@ -39,161 +35,108 @@ const delay = (i) => ({ transitionDelay: `${Math.min(i, 6) * 90}ms` });
 const HRMS = {
   id: "hrms",
   tone: "blue",
-  section: "5.2",
   name: "Justonclick HRMS & Payroll",
   tagline: "One platform for people, attendance, and pay.",
   summary:
     "Automate hiring, attendance, leave, payroll, and compliance in a single, secure platform your HR team will actually enjoy using.",
-  url: "https://hrms.justonclick.in/login",
+  url: "https://hrms.justonclick.in/",
+  screenshot: hrmsShot,
   cta: "Open HRMS App",
   modules: [
     {
+      icon: UserCircle,
+      title: "Core HR & Self-Service",
+      text: "Employee records, org structure and org chart, plus a self-service portal so employees get answers without asking HR.",
+    },
+    {
       icon: CalendarCheck,
       title: "Attendance & Leave",
-      text: "Biometric, geo, and app-based attendance with configurable leave policies and approval workflows.",
+      text: "Web and mobile punches with geo-fencing, face verification, regularization and WFH requests, plus leave types, balances and holidays.",
     },
     {
       icon: Wallet,
-      title: "Payroll & Compliance",
-      text: "Accurate, automated payroll runs with statutory compliance (PF, ESI, TDS) built into every cycle.",
+      title: "Payroll & Statutory Compliance",
+      text: "Salary structures, a preview-then-lock monthly run, PF, ESI, professional tax and TDS, and payslips published to employees.",
     },
     {
-      icon: ClipboardList,
-      title: "Onboarding & Offboarding",
-      text: "Digital documentation, asset tracking, and structured checklists from day one to exit.",
-    },
-    {
-      icon: UserCircle,
-      title: "Employee Self-Service",
-      text: "A dedicated portal for payslips, leave requests, reimbursements, and personal records.",
+      icon: Users,
+      title: "Recruitment (ATS)",
+      text: "Job openings, CV import, interviews, offers and joining, with offer and appointment letters generated in the platform.",
     },
     {
       icon: Target,
-      title: "Performance Management",
-      text: "Goal tracking, review cycles, and feedback loops that keep teams aligned and accountable.",
+      title: "Performance & Learning",
+      text: "Goals, reviews, appraisals and probation, alongside a course catalogue with enrolment and quizzes.",
+    },
+    {
+      icon: ClipboardList,
+      title: "Expenses, Assets & Exit",
+      text: "Expense claims with receipts and advances, asset inventory and assignment, and resignation through to full and final settlement.",
+    },
+    {
+      icon: Sparkles,
+      title: "Engagement & Helpdesk",
+      text: "Recognition, an activity feed, surveys and rewards, plus a helpdesk for employee tickets and grievances.",
     },
     {
       icon: BarChart3,
-      title: "Analytics & Reports",
-      text: "Real-time dashboards on headcount, attrition, payroll cost, and compliance status.",
+      title: "HR Analytics & Reports",
+      text: "Attendance, leave, headcount and attrition trends, with HR, payroll and statutory reports ready to export.",
+    },
+    {
+      icon: Lock,
+      title: "Security & Audit",
+      text: "Access profiles control modules, records and salary visibility; every sensitive action is written to the audit log.",
     },
   ],
   roles: [
-    "Employee (self-service)",
-    "Manager (approvals, team view)",
-    "HR Admin (full configuration & compliance)",
-    "Finance (payroll & cost reporting)",
+    "Employee: punches, leave, payslips and self-service",
+    "Manager: team attendance and approvals",
+    "HR: employee lifecycle, recruitment and policies",
+    "Finance: payroll runs, disbursement and statutory filing",
+    "Org Admin: settings, geo-fence, access profiles",
+    "Auditor: read-only review of activity logs",
   ],
   integrations: [
-    "Biometric & geo-attendance devices",
-    "Statutory compliance rule engines (PF, ESI, TDS)",
+    "Biometric attendance devices",
+    "PF ECR and ESIC exports for filing",
+    "Bank disbursement of salaries",
+    "Payroll journal export for accounting",
   ],
   benefits: [
     "Cuts payroll processing time from days to hours",
-    "Reduces statutory compliance risk with built-in rule engines",
-    "Gives every employee a modern self-service experience",
-    "Centralizes HR data instead of scattering it across spreadsheets",
+    "PF, ESI, professional tax and TDS calculated in every payroll run",
+    "Attendance verified by geo-fence and face check feeds straight into pay",
+    "One employee record shared by every module, on web and Android",
   ],
   bestFor: [
     "Growing SMEs running payroll on spreadsheets",
     "Multi-location teams that need consistent HR policy",
-    "HR teams that need audit-ready compliance records",
+    "Organizations with field or hybrid staff who punch in on mobile",
   ],
   security:
-    "Role-based access control, encrypted storage of employee PII, and audit logging on payroll and compliance actions.",
+    "Each organization's data is isolated from every other. Access profiles decide which modules people open, which records they reach and whether they see salaries and bank details, and sensitive actions are recorded in the audit log.",
   faqs: [
     {
       q: "Can this scale to multiple office locations?",
-      a: "Yes, attendance and leave policies can be configured per location while payroll and compliance stay centralized.",
+      a: "Yes. Attendance rules and geo-fences are set per office while payroll and compliance stay centralized.",
     },
     {
-      q: "Is there a mobile app for employees?",
-      a: "Employee self-service is accessible via the web portal; a dedicated mobile app is on the product roadmap (Section 5.5).",
+      q: "Is there a mobile app?",
+      a: "Yes. The Android app gives every role the same HR on the move: employees punch in and out, apply for leave and download payslips; managers approve requests.",
+    },
+    {
+      q: "Which statutory deductions are handled?",
+      a: "PF, ESI, professional tax and TDS are worked out in the payroll run, with PF ECR and ESIC exports ready for filing.",
+    },
+    {
+      q: "Is our data kept separate from other companies?",
+      a: "Yes. Every organization's data is isolated, and salary and bank details are visible only to the access profiles allowed to see them.",
     },
   ],
-};
-
-const TRADING = {
-  id: "trading",
-  tone: "orange",
-  section: "5.3",
-  name: "Justonclick Trading Algo",
-  tagline: "Build, backtest, and run trading strategies with confidence.",
-  summary:
-    "A systematic trading platform for designing strategies, testing them against historical data, and executing them automatically with built-in risk controls.",
-  url: "https://trading.justonclick.in/",
-  cta: "Open Trading App",
-  modules: [
-    {
-      icon: Layers,
-      title: "Strategy Builder",
-      text: "Compose rule-based strategies visually or with code, without wiring up market data plumbing yourself.",
-    },
-    {
-      icon: Activity,
-      title: "Backtesting Engine",
-      text: "Validate strategies against historical market data before risking a single rupee.",
-    },
-    {
-      icon: AlarmClock,
-      title: "Real-Time Execution",
-      text: "Automated order placement with low-latency signal-to-execution paths.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Risk Management",
-      text: "Position sizing, stop-loss automation, and exposure limits enforced at the platform level.",
-    },
-    {
-      icon: Plug,
-      title: "Broker & Exchange Integrations",
-      text: "Connect to supported brokers and data feeds through a unified integration layer.",
-    },
-    {
-      icon: Gauge,
-      title: "Performance Analytics",
-      text: "Track drawdown, win rate, and strategy-level performance from one dashboard.",
-    },
-  ],
-  roles: [
-    "Individual Trader (strategy build & execution)",
-    "Quant/Analyst (backtesting & performance review)",
-    "Admin (risk limits & broker configuration)",
-  ],
-  integrations: ["Supported broker APIs", "Market data feed providers"],
-  benefits: [
-    "Removes manual execution errors from systematic trading",
-    "Lets you validate an idea before committing capital",
-    "Keeps risk rules enforced even when you're not watching the screen",
-    "Brings every strategy's performance into one view",
-  ],
-  bestFor: [
-    "Retail traders moving from manual to systematic trading",
-    "Quant enthusiasts who want to test ideas rigorously",
-    "Small prop desks that need a shared execution platform",
-  ],
-  security:
-    "Encrypted credential storage for broker connections, platform-enforced risk limits, and activity logging on every executed trade.",
-  faqs: [
-    {
-      q: "Which brokers are supported?",
-      a: "Supported broker and exchange integrations are listed in-app and expanded over time; contact us to confirm support for a specific broker.",
-    },
-    {
-      q: "Can I run multiple strategies at once?",
-      a: "Yes, the platform is designed to run and monitor multiple strategies concurrently, each with its own risk limits.",
-    },
-  ],
-  disclaimer:
-    "Algorithmic trading involves substantial risk of loss and is not suitable for every investor. Backtested or historical performance is not indicative of future results. Justonclick Trading Algo is a technology platform and does not provide investment advice.",
 };
 
 const ROADMAP = [
-  {
-    icon: Smartphone,
-    title: "Employee Mobile App",
-    text: "A dedicated mobile companion to Justonclick HRMS & Payroll for attendance, leave, and payslips on the go.",
-  },
   {
     icon: ShoppingCart,
     title: "Procurement Management System",
@@ -245,14 +188,7 @@ function DemoForm({ product }) {
             <input id={`${product}-${f.id}`} name={f.id} type={f.type} />
           </Col>
         ))}
-        <Col md={6}>
-          <label htmlFor={`${product}-interest`}>Product of Interest</label>
-          <select id={`${product}-interest`} name="interest" defaultValue={product}>
-            <option value="hrms">Justonclick HRMS & Payroll</option>
-            <option value="trading">Justonclick Trading Algo</option>
-          </select>
-        </Col>
-        <Col md={6}>
+        <Col md={12}>
           <label htmlFor={`${product}-size`}>Company Size</label>
           <select id={`${product}-size`} name="size" defaultValue="">
             <option value="">Select</option>
@@ -268,8 +204,9 @@ function DemoForm({ product }) {
         </Col>
       </Row>
       <p className="jocproducts-form-note mb-0">
-        Submissions route to the sales contact listed on the Contact page. Form handling is not
-        wired up on this static build yet.
+        Prefer email? Send the same details to{" "}
+        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or call{" "}
+        <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> and we'll set up a walkthrough.
       </p>
     </div>
   );
@@ -293,7 +230,7 @@ function ProductBlock({ p }) {
           <span className="joc-bubble" />
           <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
           <span className="jocproducts-banner-tag">
-            <Sparkles size={13} /> {p.section} · In production
+            <Sparkles size={13} /> In production
           </span>
           <h2 className="mt-3">{p.name}</h2>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>{p.tagline}</h3>
@@ -326,12 +263,15 @@ function ProductBlock({ p }) {
         </Row>
 
         <h3 className="jocproducts-subheading joc-reveal joc-rv-drop">Screenshots</h3>
-        <p className="jocproducts-note joc-reveal joc-rv-blur mt-0">
-          <ImageIcon size={16} className="me-2" />
-          [Placeholder — verify before publishing] Real product screenshots (dashboard, key workflow
-          screens) will be added here. Illustrative mockups are currently used in place of real
-          screenshots.
-        </p>
+        <figure className="jocproducts-shot joc-reveal joc-rv-zoom">
+          <img src={p.screenshot} alt={`${p.name} home page`} width={1440} height={900} loading="lazy" />
+          <figcaption>
+            <ImageIcon size={15} /> {p.name} — live at{" "}
+            <a href={p.url} target="_blank" rel="noreferrer">
+              {p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+            </a>
+          </figcaption>
+        </figure>
 
         <Row className="g-4 mt-1">
           <Col md={6} xl={3}>
@@ -405,9 +345,9 @@ function ProductBlock({ p }) {
                 <FileSpreadsheet size={17} /> Pricing
               </h4>
               <p className="jocproducts-sub mb-0">
-                [Placeholder — verify before publishing] Pricing is not published for this product;
-                engagement is by direct conversation. Pricing tiers will be added here only if a
-                self-serve pricing model is introduced.
+                Pricing depends on team size, modules, and rollout scope, so we quote it directly
+                rather than publishing fixed tiers. Request a demo below and we'll share a proposal
+                matched to your setup.
               </p>
             </div>
           </Col>
@@ -459,8 +399,8 @@ function Products() {
             </h1>
             <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
               Alongside our services work, Justonclick designs, builds, and personally operates its
-              own production software. Below is full detail on everything we currently run — what
-              each product does, who it's built for, and how to get started.
+              own production software. Below is full detail on our flagship platform — what it does,
+              who it's built for, and how to get started.
             </p>
             <div className="jocpage-actions joc-reveal joc-rv-zoom" style={delay(3)}>
               <Link to="/contact" className="jocpage-btn">
@@ -475,20 +415,19 @@ function Products() {
       </section>
 
       <ProductBlock p={HRMS} />
-      <ProductBlock p={TRADING} />
 
       {/* 5.4 More products coming soon */}
       <section className="jocproducts-section">
         <Container>
           <span className="jocproducts-eyebrow joc-reveal joc-rv-left">
-            5.4 More Products Coming Soon
+            More Products Coming Soon
           </span>
           <h2 className="jocproducts-heading joc-reveal joc-rv-left" style={delay(1)}>
             New product categories under active evaluation
           </h2>
           <p className="jocproducts-sub joc-reveal joc-rv-left" style={delay(2)}>
-            Justonclick is actively evaluating new product categories beyond these two flagship
-            platforms. As new products launch, each is added to this page using the exact structure
+            Justonclick is actively evaluating new product categories beyond our flagship HRMS &
+            Payroll platform. As new products launch, each is added to this page using the exact structure
             above — tagline, summary, live application link, modules, user roles, integrations,
             benefits, audience, security, and FAQs — so every product is documented consistently.
           </p>
@@ -499,7 +438,7 @@ function Products() {
       <section className="jocproducts-section jocproducts-section-alt">
         <Container>
           <span className="jocproducts-eyebrow joc-reveal joc-rv-spin">
-            5.5 Product Roadmap (Planned, Not Yet Built)
+            Product Roadmap (Planned, Not Yet Built)
           </span>
           <h2 className="jocproducts-heading joc-reveal joc-rv-spin" style={delay(1)}>
             A transparent roadmap, not shipping products
@@ -533,10 +472,10 @@ function Products() {
           <div className="jocproducts-cta joc-reveal joc-rv-zoom">
             <span className="joc-bubble" />
             <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
-            <h2>Have a project in mind? Let's make it click.</h2>
+            <h2>Need something our products don't cover yet?</h2>
             <p>
-              Tell us what you're building — a product, a platform, or a team extension — and we'll
-              get back to you within one business day.
+              If HRMS & Payroll is close but not quite right, we can extend it — or
+              build the platform you need with the same team that runs ours.
             </p>
             <div className="jocproducts-cta-actions">
               <Link to="/contact" className="jocpage-btn">

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import {
   ArrowRight,
-  Award,
   Blocks,
   BrainCircuit,
   Boxes,
@@ -15,7 +14,6 @@ import {
   Gauge,
   GitBranch,
   Layers,
-  LineChart,
   Lock,
   MinusCircle,
   Monitor,
@@ -24,55 +22,67 @@ import {
   ShieldCheck,
   Smartphone,
   Sparkles,
-  Star,
   Target,
   TestTube2,
   TrendingUp,
   Users,
+  Building2,
+  GraduationCap,
+  Landmark,
+  ShoppingBag,
+  Stethoscope,
 } from "lucide-react";
 import heroImage from "../../components/assets/home-hero.png";
+import hrmsShot from "../../components/assets/products/hrms-home.jpg";
+import hrmsLogo from "../../components/assets/products/hrms-logo.svg";
+import { CLIENTS, TESTIMONIALS } from "./clientsData";
+import { POSTS } from "./blogData";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useCardGlow } from "../../hooks/useCardGlow";
 import "./Home.css";
 
 const STATS = [
-  "Years of Experience",
-  "Projects Delivered",
-  "Clients Served",
-  "Countries Served",
-  "Engineers",
-  "Products Built",
-  "Support Availability",
+  { value: "2+", label: "Years of Experience" },
+  { value: String(CLIENTS.length), label: "Client Projects Live" },
+  { value: "1", label: "SaaS Product in Production" },
+  { value: "India", label: "Clients Served Across" },
+  { value: "24/7", label: "Support Availability" },
 ];
 
 const SERVICES = [
   {
     icon: Code2,
+    id: "custom-software-development",
     title: "Custom Software Development",
     text: "Bespoke systems built around your exact workflows, not a generic feature set.",
   },
   {
     icon: Cloud,
+    id: "cloud-solutions",
     title: "Cloud Solutions",
     text: "Right-sized cloud architecture, migration, and cost optimization.",
   },
   {
     icon: BrainCircuit,
+    id: "ai-machine-learning",
     title: "AI & Machine Learning Solutions",
     text: "AI built around a measurable business outcome, deployed to production.",
   },
   {
     icon: Smartphone,
+    id: "mobile-app-development",
     title: "Mobile App Development",
     text: "Native and cross-platform apps engineered to be maintained, not just launched.",
   },
   {
     icon: ServerCog,
+    id: "devops-infrastructure-automation",
     title: "DevOps & Infrastructure Automation",
     text: "CI/CD and infrastructure-as-code that make deployment routine, not risky.",
   },
   {
     icon: Users,
+    id: "dedicated-development-teams",
     title: "Dedicated Development Teams",
     text: "A cross-functional team embedded with you long-term, around your roadmap.",
   },
@@ -104,36 +114,40 @@ const OVERVIEW = [
 ];
 
 const INDUSTRIES = [
-  "Healthcare",
-  "Banking & Finance",
-  "Insurance",
-  "Manufacturing",
-  "Retail",
-  "Logistics",
-  "Transportation",
-  "Construction",
-  "Government",
-  "Education",
-  "Real Estate",
-  "Human Resources",
-  "Procurement",
-  "Hospitality",
-  "Travel",
-  "Energy",
-  "Telecommunications",
+  { label: "Healthcare", icon: Stethoscope, text: "Clinic websites, booking & patient engagement" },
+  { label: "Banking & Finance", icon: Landmark, text: "KYC, onboarding & trust-first experiences" },
+  { label: "Human Resources", icon: Users, text: "HRMS, payroll & statutory compliance" },
+  { label: "Retail", icon: ShoppingBag, text: "E-commerce, inventory & order flows" },
+  { label: "Education", icon: GraduationCap, text: "Portals, admissions & learning platforms" },
+  { label: "Real Estate", icon: Building2, text: "Listings, enquiries & lead management" },
 ];
 
 const TECHNOLOGIES = [
-  { label: "Frontend", icon: Monitor },
-  { label: "Backend", icon: ServerCog },
-  { label: "Mobile", icon: Smartphone },
-  { label: "Cloud", icon: Cloud },
-  { label: "Databases", icon: Database },
-  { label: "DevOps", icon: GitBranch },
-  { label: "AI", icon: BrainCircuit },
-  { label: "Security", icon: Lock },
-  { label: "Testing", icon: TestTube2 },
+  { label: "Frontend", icon: Monitor, text: "React · Next.js · Angular" },
+  { label: "Backend", icon: ServerCog, text: "Node.js · Python · .NET" },
+  { label: "Mobile", icon: Smartphone, text: "React Native · Flutter" },
+  { label: "Cloud", icon: Cloud, text: "AWS · Azure · Google Cloud" },
+  { label: "Databases", icon: Database, text: "PostgreSQL · MySQL · MongoDB" },
+  { label: "DevOps", icon: GitBranch, text: "Docker · Kubernetes · Terraform" },
+  { label: "AI", icon: BrainCircuit, text: "OpenAI · LangChain · MCP" },
+  { label: "Security", icon: Lock, text: "OAuth · SSO · Encryption" },
+  { label: "Testing", icon: TestTube2, text: "Jest · Cypress · Playwright" },
 ];
+
+/** Infinite auto-scrolling strip; items are rendered twice so the loop is seamless. */
+function Marquee({ items, reverse, renderItem }) {
+  return (
+    <div className={`jochome-marquee${reverse ? " jochome-marquee-reverse" : ""}`}>
+      <div className="jochome-marquee-track">
+        {[0, 1].map((copy) => (
+          <div className="jochome-marquee-group" key={copy} aria-hidden={copy === 1}>
+            {items.map((item) => renderItem(item, copy === 1))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const METHODOLOGY = [
   {
@@ -195,51 +209,32 @@ const WHY_ROWS = [
   },
 ];
 
-const CASES = [
+const WORK = [
   {
-    icon: Users,
-    tag: "Product",
+    id: "hrms",
+    tag: "Our Product",
     title: "Justonclick HRMS & Payroll",
-    text: "In-house HR & payroll platform, in daily production use.",
+    text: "Our own HR, attendance, and payroll platform — designed, built, and run in daily production.",
+    image: hrmsShot,
+    logo: hrmsLogo,
+    to: "/products",
+    cta: "Explore the product",
   },
-  {
-    icon: LineChart,
-    tag: "Product",
-    title: "Justonclick Trading Algo",
-    text: "In-house systematic trading platform, in daily production use.",
-    accent: true,
-  },
-  {
-    icon: Monitor,
+  ...CLIENTS.map((c) => ({
+    id: c.id,
     tag: "Client Work",
-    title: "Local Credit Solutions",
-    text: "Custom website design and build for a financial and credit services client.",
-  },
+    title: c.name,
+    text: c.summary,
+    image: c.screenshot,
+    logo: c.logo,
+    href: c.url,
+    cta: `Visit ${c.domain}`,
+  })),
 ];
 
 const OUTCOMES = [
   { text: "Payroll processing time cut from days to hours", src: "Justonclick HRMS & Payroll" },
-  {
-    text: "Manual execution errors removed from systematic trading",
-    src: "Justonclick Trading Algo",
-  },
-  {
-    text: "A live, production website replacing an absent or outdated web presence",
-    src: "Local Credit Solutions",
-  },
-];
-
-const POSTS = [
-  { kind: "Payroll", title: "5 Signs Your Business Has Outgrown Spreadsheet Payroll" },
-  { kind: "Trading", title: "What to Look for in an Algorithmic Trading Platform" },
-  { kind: "Startups", title: "Web vs. Mobile First: Choosing the Right MVP for Your Startup" },
-];
-
-const CREDENTIALS = [
-  { icon: ShieldCheck, label: "Certifications" },
-  { icon: Cloud, label: "Cloud Partner Status" },
-  { icon: Award, label: "Industry Awards" },
-  { icon: Lock, label: "Compliance" },
+  ...CLIENTS.map((c) => ({ text: c.outcome, src: c.name })),
 ];
 
 /** stagger helper for scroll reveals */
@@ -261,7 +256,7 @@ function Home() {
             <Col lg={6}>
               <span className="jochome-hero-badge joc-reveal">
                 <i />
-                Global IT Services & Digital Engineering
+                IT Services & Digital Engineering · Pune, India
               </span>
               <h1 className="jochome-hero-title joc-reveal" style={delay(1)}>
                 Engineering software that <span>runs your business</span>, not just launches it.
@@ -278,8 +273,8 @@ function Home() {
                 <Link to="/services" className="jochome-btn-secondary">
                   Explore Services <ArrowRight size={17} />
                 </Link>
-                <Link to="/portfolio" className="jochome-btn-ghost">
-                  View Portfolio <ArrowRight size={17} />
+                <Link to="/case-studies" className="jochome-btn-ghost">
+                  View Case Studies <ArrowRight size={17} />
                 </Link>
               </div>
               <div className="jochome-hero-trust joc-reveal" style={delay(4)}>
@@ -321,11 +316,10 @@ function Home() {
             <span className="joc-bubble" />
             <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
             <Row className="g-0">
-              {STATS.map((label) => (
-                <Col key={label} xs={6} md={4} xl={3} className="jochome-stat">
-                  <div className="jochome-stat-value">—</div>
-                  <div className="jochome-stat-label">{label}</div>
-                  <span className="jochome-stat-note">Verify before publishing</span>
+              {STATS.map((stat) => (
+                <Col key={stat.label} xs={6} md={4} lg className="jochome-stat">
+                  <div className="jochome-stat-value">{stat.value}</div>
+                  <div className="jochome-stat-label">{stat.label}</div>
                 </Col>
               ))}
             </Row>
@@ -339,10 +333,18 @@ function Home() {
           <div className="joc-reveal">
             <p className="jochome-trust-label mb-0">Trusted by</p>
             <div className="jochome-trust-strip">
-              <span className="jochome-trust-item">Local Credit Solutions</span>
-              <span className="jochome-trust-item jochome-trust-empty">
-                Client & partner logos added only with explicit permission
-              </span>
+              {CLIENTS.map((c) => (
+                <a
+                  key={c.id}
+                  href={c.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="jochome-trust-item jochome-trust-logo"
+                >
+                  <img src={c.logo} alt={`${c.name} logo`} />
+                  <span>{c.name}</span>
+                </a>
+              ))}
             </div>
           </div>
         </Container>
@@ -447,7 +449,7 @@ function Home() {
               <Col key={s.title} md={6} xl={4}>
                 <Link
                   {...glow}
-                  to="/services"
+                  to={`/services#${s.id}`}
                   className={`jochome-card joc-reveal joc-rv-flip${i % 2 ? " jochome-card-accent" : ""}`}
                   style={delay(i)}
                 >
@@ -481,49 +483,40 @@ function Home() {
             <span className="jochome-eyebrow">Featured Products</span>
             <h2 className="jochome-heading">Software we run ourselves, every day</h2>
           </div>
-          <Row className="g-4 mt-1">
-            <Col lg={6}>
-              <div className="jochome-product jochome-product-blue joc-reveal joc-rv-left">
-                <span className="joc-bubble" />
-                <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
+          <div className="jochome-product jochome-product-blue jochome-product-wide mt-4 joc-reveal joc-rv-left">
+            <span className="joc-bubble" />
+            <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
+            <Row className="g-4 align-items-center">
+              <Col lg={5}>
                 <span className="jochome-product-badge">
                   <Users size={13} /> In production
                 </span>
                 <h3>Justonclick HRMS & Payroll</h3>
-                <p>HR, attendance, and payroll software we use ourselves.</p>
+                <p>
+                  Employee records, attendance, leave, payroll with PF, ESI and TDS, and
+                  recruitment — one platform we run for ourselves every day, on web and mobile.
+                </p>
                 <a
                   className="jochome-product-link"
-                  href="https://hrms.justonclick.in/login"
+                  href="https://hrms.justonclick.in/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   Visit HRMS <ExternalLink size={15} />
                 </a>
-              </div>
-            </Col>
-            <Col lg={6}>
-              <div
-                className="jochome-product jochome-product-orange joc-reveal joc-rv-right"
-                style={delay(1)}
-              >
-                <span className="joc-bubble joc-bubble-orange" />
-                <span className="joc-bubble joc-bubble-bl" />
-                <span className="jochome-product-badge">
-                  <LineChart size={13} /> In production
-                </span>
-                <h3>Justonclick Trading Algo</h3>
-                <p>Our own systematic trading platform.</p>
-                <a
-                  className="jochome-product-link"
-                  href="https://trading.justonclick.in/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Visit Trading Algo <ExternalLink size={15} />
-                </a>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+              <Col lg={7}>
+                <img
+                  className="jochome-product-shot"
+                  src={hrmsShot}
+                  alt="Justonclick HRMS & Payroll home page"
+                  width={1440}
+                  height={900}
+                  loading="lazy"
+                />
+              </Col>
+            </Row>
+          </div>
           <div className="text-center mt-5 joc-reveal">
             <Link to="/products" className="jochome-btn-primary">
               View All Products <ArrowRight size={17} />
@@ -539,14 +532,28 @@ function Home() {
             <span className="jochome-eyebrow">Industries We Serve</span>
             <h2 className="jochome-heading">Domain context, not just code</h2>
           </div>
-          <div className="jochome-industries joc-reveal">
-            {INDUSTRIES.map((industry) => (
-              <Link key={industry} to="/services" className="jochome-industry">
-                {industry}
-              </Link>
-            ))}
-          </div>
         </Container>
+        <div className="joc-reveal">
+          <Marquee
+            items={INDUSTRIES}
+            renderItem={(ind, hidden) => (
+              <Link
+                key={ind.label}
+                to="/services"
+                className="jochome-slide"
+                tabIndex={hidden ? -1 : undefined}
+              >
+                <span className="jochome-slide-icon">
+                  <ind.icon size={22} />
+                </span>
+                <span>
+                  <strong>{ind.label}</strong>
+                  <small>{ind.text}</small>
+                </span>
+              </Link>
+            )}
+          />
+        </div>
       </section>
 
       {/* 2.9 Technology Expertise */}
@@ -556,22 +563,35 @@ function Home() {
             <span className="jochome-eyebrow">Technology Expertise</span>
             <h2 className="jochome-heading">Nine practice areas, one engineering standard</h2>
           </div>
-          <Row className="g-3 mt-1">
-            {TECHNOLOGIES.map((tech, i) => (
-              <Col key={tech.label} xs={6} md={4} xl={3}>
-                <Link
-                  to="/technologies"
-                  className="jochome-tech joc-reveal joc-rv-drop"
-                  style={delay(i)}
-                >
-                  <span className="joc-bubble" />
-                  <span className="jochome-tech-fill" />
-                  <tech.icon size={19} />
-                  <span>{tech.label}</span>
-                </Link>
-              </Col>
-            ))}
-          </Row>
+        </Container>
+        <div className="joc-reveal">
+          <Marquee
+            reverse
+            items={TECHNOLOGIES}
+            renderItem={(tech, hidden) => (
+              <Link
+                key={tech.label}
+                to="/technologies"
+                className="jochome-slide jochome-slide-tech"
+                tabIndex={hidden ? -1 : undefined}
+              >
+                <span className="jochome-slide-icon">
+                  <tech.icon size={22} />
+                </span>
+                <span>
+                  <strong>{tech.label}</strong>
+                  <small>{tech.text}</small>
+                </span>
+              </Link>
+            )}
+          />
+        </div>
+        <Container>
+          <div className="text-center mt-4 joc-reveal">
+            <Link to="/technologies" className="jochome-btn-secondary">
+              Explore Our Stack <ArrowRight size={17} />
+            </Link>
+          </div>
         </Container>
       </section>
 
@@ -616,11 +636,6 @@ function Home() {
               </Col>
             ))}
           </Row>
-          <p className="jochome-sub mt-4 joc-reveal">
-            [Placeholder — verify before publishing] Aggregate metrics such as average delivery time
-            and client retention rate will be added once the project sample is large enough to
-            report honestly.
-          </p>
         </Container>
       </section>
 
@@ -628,90 +643,79 @@ function Home() {
       <section className="jochome-section">
         <Container>
           <div className="text-center jochome-center joc-reveal">
-            <span className="jochome-eyebrow">Featured Case Studies</span>
-            <h2 className="jochome-heading">Three systems in daily production use</h2>
+            <span className="jochome-eyebrow">Our Work</span>
+            <h2 className="jochome-heading">Live systems, in production today</h2>
           </div>
           <Row className="g-4 mt-1">
-            {CASES.map((c, i) => (
-              <Col key={c.title} md={6} xl={4}>
-                <Link
-                  {...glow}
-                  to="/case-studies"
-                  className={`jochome-card joc-reveal joc-rv-spin${c.accent ? " jochome-card-accent" : ""}`}
-                  style={delay(i)}
-                >
-                  <span className={`joc-bubble${c.accent ? " joc-bubble-orange" : ""}`} />
-                  <span className="joc-bubble joc-bubble-bl" />
-                  <div className="jochome-card-icon">
-                    <c.icon size={22} />
+            {WORK.map((w, i) => {
+              const body = (
+                <>
+                  <div className="jochome-work-shot">
+                    <img src={w.image} alt={`${w.title} website`} width={1440} height={900} loading="lazy" />
+                    <span className="jochome-work-logo">
+                      <img src={w.logo} alt={`${w.title} logo`} />
+                    </span>
                   </div>
-                  <span className="jochome-case-tag">{c.tag}</span>
-                  <h3>{c.title}</h3>
-                  <p>{c.text}</p>
-                  <span className="jochome-card-more">
-                    Read the case study <ArrowRight size={15} />
-                  </span>
-                </Link>
-              </Col>
-            ))}
+                  <div className="jochome-work-body">
+                    <span className="jochome-case-tag">{w.tag}</span>
+                    <h3>{w.title}</h3>
+                    <p>{w.text}</p>
+                    <span className="jochome-card-more">
+                      {w.cta} {w.href ? <ExternalLink size={15} /> : <ArrowRight size={15} />}
+                    </span>
+                  </div>
+                </>
+              );
+              const cls = "jochome-card jochome-work joc-reveal joc-rv-spin";
+              return (
+                <Col key={w.id} md={6} xl={4}>
+                  {w.href ? (
+                    <a {...glow} href={w.href} target="_blank" rel="noreferrer" className={cls} style={delay(i)}>
+                      {body}
+                    </a>
+                  ) : (
+                    <Link {...glow} to={w.to} className={cls} style={delay(i)}>
+                      {body}
+                    </Link>
+                  )}
+                </Col>
+              );
+            })}
           </Row>
         </Container>
       </section>
 
       {/* 2.13 Testimonial */}
-      <section className="jochome-section jochome-section-alt">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={9}>
-              <div className="text-center jochome-center joc-reveal">
-                <span className="jochome-eyebrow">Client Testimonials</span>
-                <h2 className="jochome-heading">In our clients' words</h2>
-              </div>
-              <blockquote className="jochome-quote joc-reveal joc-rv-blur">
-                <span className="joc-bubble joc-bubble-orange" />
-                <div className="jochome-quote-stars">
-                  {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} size={17} fill="currentColor" />
-                  ))}
-                </div>
-                <p>
-                  [Insert a 1-2 sentence quote describing the specific outcome, result, or
-                  experience the client had working with Justonclick.]
-                </p>
-                <footer>
-                  <strong>[Client Name], [Job Title]</strong>
-                  [Company Name] — [Project / Service]
-                </footer>
-              </blockquote>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* 2.14 Awards & Certifications */}
-      <section className="jochome-section">
-        <Container>
-          <div className="text-center jochome-center joc-reveal">
-            <span className="jochome-eyebrow">Awards, Certifications & Partnerships</span>
-            <h2 className="jochome-heading">Displayed only once formally granted</h2>
-          </div>
-          <Row className="g-3 mt-1">
-            {CREDENTIALS.map((item, i) => (
-              <Col key={item.label} sm={6} xl={3}>
-                <div className="jochome-badge joc-reveal joc-rv-zoom" style={delay(i)}>
-                  <span className="joc-bubble" />
-                  <item.icon size={24} />
-                  {item.label}
-                  <small>Placeholder — verify before publishing</small>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      {TESTIMONIALS.length > 0 && (
+        <section className="jochome-section jochome-section-alt">
+          <Container>
+            <div className="text-center jochome-center joc-reveal">
+              <span className="jochome-eyebrow">Client Testimonials</span>
+              <h2 className="jochome-heading">In our clients' words</h2>
+            </div>
+            <Row className="g-4 mt-1">
+              {TESTIMONIALS.map((c, i) => (
+                <Col key={c.id} lg={6}>
+                  <blockquote className="jochome-quote h-100 joc-reveal joc-rv-blur" style={delay(i)}>
+                    <span className={`joc-bubble${i % 2 ? "" : " joc-bubble-orange"}`} />
+                    <img className="jochome-quote-logo" src={c.logo} alt={`${c.name} logo`} />
+                    <p>{c.testimonial.quote}</p>
+                    <footer>
+                      <strong>
+                        {[c.testimonial.author, c.testimonial.role].filter(Boolean).join(", ")}
+                      </strong>
+                      {c.name}
+                    </footer>
+                  </blockquote>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </section>
+      )}
 
       {/* 2.15 Blog */}
-      <section className="jochome-section jochome-section-alt">
+      <section className="jochome-section">
         <Container>
           <div className="text-center jochome-center joc-reveal">
             <span className="jochome-eyebrow">Latest Blogs & Insights</span>
@@ -719,20 +723,26 @@ function Home() {
           </div>
           <Row className="g-4 mt-1">
             {POSTS.map((p, i) => (
-              <Col key={p.title} md={6} xl={4}>
+              <Col key={p.slug} md={6}>
                 <Link
                   {...glow}
-                  to="/blog"
-                  className="jochome-card joc-reveal joc-rv-right"
+                  to={`/blog/${p.slug}`}
+                  className="jochome-card jochome-work joc-reveal joc-rv-right"
                   style={delay(i)}
                 >
-                  <span className="joc-bubble joc-bubble-orange" />
-                  <span className="jochome-post-kind">{p.kind}</span>
-                  <h3 className="mt-3">{p.title}</h3>
-                  <span className="jochome-post-meta">Insight · Justonclick team</span>
-                  <span className="jochome-card-more">
-                    Read the post <ArrowRight size={15} />
-                  </span>
+                  <div className="jochome-work-shot">
+                    <img src={p.cover} alt={p.coverAlt} width={1280} height={720} loading="lazy" />
+                  </div>
+                  <div className="jochome-work-body">
+                    <span className="jochome-post-kind">{p.category}</span>
+                    <h3 className="mt-3">{p.title}</h3>
+                    <span className="jochome-post-meta">
+                      {p.date} · {p.readTime}
+                    </span>
+                    <span className="jochome-card-more">
+                      Read the article <ArrowRight size={15} />
+                    </span>
+                  </div>
                 </Link>
               </Col>
             ))}
@@ -746,7 +756,7 @@ function Home() {
       </section>
 
       {/* 2.16 Closing CTA */}
-      <section className="jochome-section">
+      <section className="jochome-section jochome-section-alt">
         <Container>
           <div className="jochome-cta joc-reveal joc-rv-zoom">
             <span className="joc-bubble" />

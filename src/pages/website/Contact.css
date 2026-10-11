@@ -1,0 +1,217 @@
+/* Contact page — unique prefix: joccontact- */
+
+.joccontact-wrap {
+  overflow-x: hidden;
+}
+
+.joccontact-section {
+  padding: 4.5rem 0;
+}
+
+.joccontact-section-alt {
+  background: var(--joc-surface-alt);
+  border-top: 1px solid var(--joc-line);
+  border-bottom: 1px solid var(--joc-line);
+}
+
+/* ---------- channels ---------- */
+.joccontact-channel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.8rem;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  color: var(--joc-body);
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.joccontact-channel:hover {
+  transform: translateY(-5px);
+  border-color: var(--joc-blue);
+  box-shadow: var(--joc-shadow-md);
+  color: var(--joc-body);
+}
+
+.joccontact-channel-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+  margin-bottom: 1.1rem;
+}
+
+.joccontact-channel-label {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--joc-orange-dark);
+}
+
+.joccontact-channel strong {
+  margin: 0.45rem 0 0.6rem;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--joc-ink);
+  overflow-wrap: anywhere;
+}
+
+.joccontact-channel p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* ---------- form ---------- */
+.joccontact-form,
+.joccontact-office {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+}
+
+.joccontact-form h2,
+.joccontact-office h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  margin-bottom: 1.4rem;
+}
+
+.joccontact-form h2 svg,
+.joccontact-office h2 svg {
+  color: var(--joc-blue-dark);
+}
+
+.joccontact-form label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--joc-ink);
+  margin-bottom: 0.35rem;
+}
+
+.joccontact-form input,
+.joccontact-form select,
+.joccontact-form textarea {
+  width: 100%;
+  padding: 0.72rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid var(--joc-line);
+  background: var(--joc-surface-alt);
+  color: var(--joc-ink);
+  font-size: 0.95rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.joccontact-form input:focus,
+.joccontact-form select:focus,
+.joccontact-form textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--joc-blue);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.14);
+}
+
+.joccontact-submit {
+  margin-top: 1.5rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.joccontact-form-note {
+  margin: 0.9rem 0 0;
+  font-size: 0.84rem;
+}
+
+/* ---------- office ---------- */
+.joccontact-office address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1.3rem;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.joccontact-office address strong {
+  color: var(--joc-ink);
+}
+
+.joccontact-map {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--joc-line);
+  aspect-ratio: 4 / 3;
+  background: var(--joc-blue-light);
+}
+
+.joccontact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.joccontact-reply {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  font-size: 0.9rem;
+}
+
+.joccontact-reply svg {
+  color: var(--joc-orange-dark);
+  flex-shrink: 0;
+}
+
+/* ---------- cta ---------- */
+.joccontact-cta {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-radius: 28px;
+  background:
+    radial-gradient(520px 260px at 10% 0%, var(--joc-blue-light) 0%, transparent 70%),
+    radial-gradient(520px 260px at 90% 100%, var(--joc-orange-light) 0%, transparent 70%),
+    #fff;
+  border: 1px solid var(--joc-line);
+}
+
+.joccontact-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+@media (max-width: 575.98px) {
+  .joccontact-section {
+    padding: 3.2rem 0;
+  }
+
+  .joccontact-form,
+  .joccontact-office {
+    padding: 1.4rem;
+  }
+}

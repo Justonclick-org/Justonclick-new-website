@@ -481,3 +481,30 @@
     padding: 1.7rem;
   }
 }
+
+/* ---------- real product screenshot ---------- */
+.jocproducts-shot {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid var(--joc-line);
+  background: #fff;
+  box-shadow: var(--joc-shadow-md);
+}
+
+.jocproducts-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.jocproducts-shot figcaption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.9rem 1.2rem;
+  border-top: 1px solid var(--joc-line);
+  font-size: 0.88rem;
+  color: var(--joc-body);
+}

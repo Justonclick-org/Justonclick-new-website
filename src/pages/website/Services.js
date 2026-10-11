@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import {
   ArrowRight,
@@ -162,6 +162,18 @@ function ServiceBlock({ service, index }) {
 function Services() {
   useScrollReveal();
   const [group, setGroup] = useState("All");
+  const { hash } = useLocation();
+
+  // Deep links such as /services#cloud-solutions jump straight to that service.
+  useEffect(() => {
+    if (!hash) return undefined;
+    setGroup("All");
+    const timer = setTimeout(() => {
+      const el = document.getElementById(hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [hash]);
 
   const filtered = useMemo(
     () => (group === "All" ? SERVICES : SERVICES.filter((s) => s.group === group)),
@@ -201,8 +213,8 @@ function Services() {
                   <span>Service lines</span>
                 </div>
                 <div>
-                  <strong>17+</strong>
-                  <span>Industries served</span>
+                  <strong>6</strong>
+                  <span>Core industries</span>
                 </div>
                 <div>
                   <strong>End-to-end</strong>
@@ -282,7 +294,7 @@ function Services() {
       </section>
 
       {/* Detailed sections */}
-      {SERVICES.map((s, i) => (
+      {filtered.map((s, i) => (
         <ServiceBlock key={s.id} service={s} index={i} />
       ))}
 

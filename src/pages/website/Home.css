@@ -1269,3 +1269,231 @@
   z-index: 1;
   right: 1.9rem;
 }
+/* ---------- client logos (trusted by) ---------- */
+.jochome-trust-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-style: solid;
+  text-decoration: none;
+}
+
+.jochome-trust-logo img {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ---------- featured product (single, wide) ---------- */
+.jochome-product-wide {
+  padding: 2.4rem;
+}
+
+.jochome-product-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 22px 48px rgba(2, 64, 105, 0.28);
+}
+
+/* ---------- our work (screenshot cards) ---------- */
+.jochome-work {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.jochome-work-shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--joc-line);
+  background: var(--joc-blue-light);
+}
+
+.jochome-work-shot > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jochome-work:hover .jochome-work-shot > img {
+  transform: scale(1.04);
+}
+
+.jochome-work-logo {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--joc-shadow-md);
+}
+
+.jochome-work-logo img {
+  height: 30px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+}
+
+.jochome-work-body {
+  padding: 1.5rem 1.6rem 1.7rem;
+}
+
+/* ---------- testimonial logos ---------- */
+.jochome-quote-logo {
+  height: 40px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+@media (max-width: 575.98px) {
+  .jochome-product-wide {
+    padding: 1.6rem;
+  }
+
+  .jochome-quote {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ---------- auto-scrolling strips (industries, technologies) ---------- */
+.jochome-marquee {
+  --jochome-marquee-gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  padding: 0.6rem 0 1rem;
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.jochome-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: jochome-marquee 42s linear infinite;
+}
+
+.jochome-marquee-reverse .jochome-marquee-track {
+  animation-direction: reverse;
+  animation-duration: 50s;
+}
+
+.jochome-marquee:hover .jochome-marquee-track,
+.jochome-marquee:focus-within .jochome-marquee-track {
+  animation-play-state: paused;
+}
+
+.jochome-marquee-group {
+  display: flex;
+  gap: var(--jochome-marquee-gap);
+  padding-right: var(--jochome-marquee-gap);
+}
+
+@keyframes jochome-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.jochome-slide {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  width: 300px;
+  flex-shrink: 0;
+  padding: 1.1rem 1.25rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.jochome-slide:hover {
+  transform: translateY(-4px);
+  border-color: var(--joc-blue);
+  box-shadow: var(--joc-shadow-md);
+}
+
+.jochome-slide-icon {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.jochome-slide-tech .jochome-slide-icon {
+  background: var(--joc-orange-light);
+  color: var(--joc-orange-dark);
+}
+
+.jochome-slide:hover .jochome-slide-icon {
+  background: var(--joc-blue);
+  color: #fff;
+}
+
+.jochome-slide-tech:hover .jochome-slide-icon {
+  background: var(--joc-orange);
+}
+
+.jochome-slide strong {
+  display: block;
+  color: var(--joc-ink);
+  font-size: 1rem;
+}
+
+.jochome-slide small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--joc-body);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 575.98px) {
+  .jochome-slide {
+    width: 250px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jochome-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .jochome-marquee-track {
+    animation: none;
+  }
+
+  .jochome-marquee-group[aria-hidden="true"] {
+    display: none;
+  }
+}

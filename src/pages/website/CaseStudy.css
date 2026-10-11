@@ -957,3 +957,50 @@
     padding: 2.5rem 0 0;
   }
 }
+
+/* ---------- real screenshots + client logos ---------- */
+.joccase-shot {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+}
+
+.joccase-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.joccase-shot:hover img {
+  transform: scale(1.04);
+}
+
+.joccase-quote-logo {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  margin-bottom: 1.1rem;
+  position: relative;
+}
+
+.joccase-panel-quote {
+  margin: 0;
+}
+
+.joccase-panel-quote blockquote {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--joc-ink);
+  font-weight: 600;
+}
+
+.joccase-panel-quote figcaption {
+  font-size: 0.86rem;
+}

@@ -9,6 +9,9 @@ import Services from "../pages/website/Services";
 import Products from "../pages/website/Products";
 import Technologies from "../pages/website/Technologies"; 
 import CaseStudy from "../pages/website/CaseStudy";
+import Careers from "../pages/website/Careers";
+import Blog from "../pages/website/Blog";
+import BlogPost from "../pages/website/BlogPost";
 
 
 const WebsiteRoutes = () => {
@@ -59,6 +62,30 @@ const WebsiteRoutes = () => {
         element={
           <WebsiteLayout>
             <Technologies />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="/blog"
+        element={
+          <WebsiteLayout>
+            <Blog />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="/blog/:slug"
+        element={
+          <WebsiteLayout>
+            <BlogPost />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="/careers"
+        element={
+          <WebsiteLayout>
+            <Careers />
           </WebsiteLayout>
         }
       />

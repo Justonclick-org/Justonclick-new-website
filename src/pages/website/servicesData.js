@@ -28,7 +28,7 @@ import {
 export const SERVICES = [
   {
     id: "custom-software-development",
-    num: "4.1",
+    num: "01",
     group: "Build",
     icon: Code2,
     title: "Custom Software Development",
@@ -42,7 +42,7 @@ export const SERVICES = [
     ],
     process: ["Discovery & requirements", "Solution architecture", "Iterative build & QA", "Deployment & support"],
     tech: ["React/Next.js", "Node.js/NestJS", "Java/Spring Boot", ".NET", "Python", "PostgreSQL/MongoDB"],
-    industries: ["Banking & Finance", "Manufacturing", "Logistics", "Healthcare"],
+    industries: ["Healthcare", "Banking & Finance", "Human Resources", "Retail"],
     deliverables: [
       "Requirements & architecture documentation",
       "Production-ready application",
@@ -55,15 +55,15 @@ export const SERVICES = [
         a: "Yes, full IP ownership transfers to the client on delivery, per the engagement agreement.",
       },
       {
-        q: "How long does a custom build take?",
-        a: "It depends on scope; a typical MVP runs 8-14 weeks, communicated precisely after discovery.",
+        q: "Do you support the software after launch?",
+        a: "Yes. Every build ships with a support plan, and ongoing maintenance can continue under our Managed IT Services.",
       },
     ],
     cta: "Start a Custom Build",
   },
   {
     id: "enterprise-software-development",
-    num: "4.2",
+    num: "02",
     group: "Build",
     icon: Boxes,
     title: "Enterprise Software Development",
@@ -82,7 +82,7 @@ export const SERVICES = [
       "Change management & rollout support",
     ],
     tech: ["Java/Spring Boot", ".NET", "Node.js", "PostgreSQL/SQL Server", "Kubernetes", "OAuth/SSO/IAM"],
-    industries: ["Banking & Finance", "Insurance", "Government", "Manufacturing"],
+    industries: ["Banking & Finance", "Human Resources", "Retail", "Real Estate"],
     deliverables: [
       "Enterprise architecture blueprint",
       "Phased rollout plan",
@@ -103,7 +103,7 @@ export const SERVICES = [
   },
   {
     id: "web-application-development",
-    num: "4.3",
+    num: "03",
     group: "Build",
     icon: Globe,
     title: "Web Application Development",
@@ -117,7 +117,7 @@ export const SERVICES = [
     ],
     process: ["UX & information architecture", "Design system", "Build & QA", "Performance & SEO audit", "Launch"],
     tech: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    industries: ["Retail", "Real Estate", "Hospitality", "Education"],
+    industries: ["Retail", "Real Estate", "Education", "Healthcare"],
     deliverables: [
       "Responsive web application",
       "Documented component/design system",
@@ -138,7 +138,7 @@ export const SERVICES = [
   },
   {
     id: "mobile-app-development",
-    num: "4.4",
+    num: "04",
     group: "Build",
     icon: Smartphone,
     title: "Mobile App Development",
@@ -158,7 +158,7 @@ export const SERVICES = [
       "Post-launch support",
     ],
     tech: ["React Native", "Flutter", "Swift/Kotlin (native)", "Node.js backend"],
-    industries: ["Retail", "Healthcare", "Logistics", "Human Resources"],
+    industries: ["Healthcare", "Retail", "Education"],
     deliverables: [
       "Production-ready iOS/Android app",
       "App store listing & submission",
@@ -179,7 +179,7 @@ export const SERVICES = [
   },
   {
     id: "saas-product-development",
-    num: "4.5",
+    num: "05",
     group: "Build",
     icon: Blocks,
     title: "SaaS Product Development",
@@ -198,7 +198,7 @@ export const SERVICES = [
       "Iterative feature delivery",
     ],
     tech: ["Next.js", "Node.js/NestJS", "PostgreSQL", "Redis", "AWS/Azure", "Payment integrations"],
-    industries: ["Human Resources", "Procurement", "Banking & Finance", "Logistics"],
+    industries: ["Human Resources", "Banking & Finance", "Education"],
     deliverables: ["Multi-tenant SaaS architecture", "MVP release", "Admin & billing tooling", "Iteration roadmap"],
     faqs: [
       {
@@ -214,7 +214,7 @@ export const SERVICES = [
   },
   {
     id: "ui-ux-design",
-    num: "4.6",
+    num: "06",
     group: "Design",
     icon: Palette,
     title: "UI/UX Design",
@@ -234,7 +234,7 @@ export const SERVICES = [
       "Developer handoff",
     ],
     tech: ["Figma", "Design tokens", "WCAG accessibility guidelines"],
-    industries: ["All industries served"],
+    industries: ["Healthcare", "Education", "Real Estate"],
     deliverables: [
       "User flow diagrams",
       "Wireframes & prototypes",
@@ -255,7 +255,7 @@ export const SERVICES = [
   },
   {
     id: "api-development-integration",
-    num: "4.7",
+    num: "07",
     group: "Build",
     icon: PlugZap,
     title: "API Development & Integration",
@@ -275,7 +275,7 @@ export const SERVICES = [
       "Monitoring setup",
     ],
     tech: ["REST/GraphQL", "Node.js", "Java", "OAuth/JWT", "OpenAPI/Swagger"],
-    industries: ["Banking & Finance", "Logistics", "Retail", "Procurement"],
+    industries: ["Banking & Finance", "Retail", "Human Resources"],
     deliverables: [
       "API specification & documentation",
       "Secure, versioned API implementation",
@@ -296,7 +296,7 @@ export const SERVICES = [
   },
   {
     id: "cloud-solutions",
-    num: "4.8",
+    num: "08",
     group: "Cloud & Ops",
     icon: CloudCog,
     title: "Cloud Solutions",
@@ -315,7 +315,7 @@ export const SERVICES = [
       "Monitoring & optimization",
     ],
     tech: ["AWS", "Azure", "Google Cloud", "Terraform", "Docker", "Kubernetes"],
-    industries: ["All industries served"],
+    industries: ["Banking & Finance", "Healthcare", "Retail"],
     deliverables: [
       "Cloud architecture documentation",
       "Migration or provisioning execution",
@@ -336,7 +336,7 @@ export const SERVICES = [
   },
   {
     id: "devops-infrastructure-automation",
-    num: "4.9",
+    num: "09",
     group: "Cloud & Ops",
     icon: GitBranch,
     title: "DevOps & Infrastructure Automation",
@@ -350,11 +350,11 @@ export const SERVICES = [
     ],
     process: ["Current-state audit", "Pipeline & IaC design", "Implementation", "Monitoring & handover"],
     tech: ["Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Terraform", "Ansible"],
-    industries: ["All industries served"],
+    industries: ["Banking & Finance", "Retail"],
     deliverables: [
       "CI/CD pipeline configuration",
       "Infrastructure-as-code repository",
-      "Monitoring & alerting setup",
+      "Observability dashboards & alert routing",
       "Documented runbooks",
     ],
     faqs: [
@@ -371,7 +371,7 @@ export const SERVICES = [
   },
   {
     id: "ai-machine-learning",
-    num: "4.10",
+    num: "10",
     group: "Data & AI",
     icon: Brain,
     title: "AI & Machine Learning Solutions",
@@ -390,7 +390,7 @@ export const SERVICES = [
       "Production deployment & monitoring",
     ],
     tech: ["Python", "OpenAI", "LangChain", "MCP", "Vector databases", "Classical ML", "NLP"],
-    industries: ["Banking & Finance", "Retail", "Logistics", "Human Resources"],
+    industries: ["Healthcare", "Banking & Finance", "Retail", "Education"],
     deliverables: [
       "Problem & data assessment report",
       "Working model or AI system",
@@ -411,7 +411,7 @@ export const SERVICES = [
   },
   {
     id: "data-engineering-analytics",
-    num: "4.11",
+    num: "11",
     group: "Data & AI",
     icon: Database,
     title: "Data Engineering & Analytics",
@@ -430,7 +430,7 @@ export const SERVICES = [
       "Dashboarding & handover",
     ],
     tech: ["Python", "PostgreSQL", "Cloud data warehouses", "ETL/ELT tooling"],
-    industries: ["Banking & Finance", "Retail", "Manufacturing", "Logistics"],
+    industries: ["Banking & Finance", "Retail", "Education"],
     deliverables: [
       "Data architecture documentation",
       "Production data pipelines",
@@ -451,7 +451,7 @@ export const SERVICES = [
   },
   {
     id: "business-process-automation",
-    num: "4.12",
+    num: "12",
     group: "Data & AI",
     icon: Repeat,
     title: "Business Process Automation",
@@ -470,7 +470,7 @@ export const SERVICES = [
       "Rollout & monitoring",
     ],
     tech: ["Node.js/Python scripting", "Workflow engines", "API integrations", "RPA where appropriate"],
-    industries: ["Human Resources", "Procurement", "Banking & Finance", "Logistics"],
+    industries: ["Human Resources", "Banking & Finance", "Real Estate"],
     deliverables: [
       "Process map & automation opportunity assessment",
       "Automated workflow implementation",
@@ -491,7 +491,7 @@ export const SERVICES = [
   },
   {
     id: "erp-crm-development",
-    num: "4.13",
+    num: "13",
     group: "Platforms",
     icon: LayoutDashboard,
     title: "ERP & CRM Development",
@@ -505,7 +505,7 @@ export const SERVICES = [
     ],
     process: ["Business process discovery", "Module & data model design", "Phased build", "Rollout & training"],
     tech: ["Node.js/Java/.NET backend", "PostgreSQL/SQL Server", "React/Next.js front end"],
-    industries: ["Manufacturing", "Construction", "Retail", "Procurement"],
+    industries: ["Retail", "Real Estate", "Human Resources"],
     deliverables: [
       "Documented process & data model",
       "Production ERP/CRM system",
@@ -526,7 +526,7 @@ export const SERVICES = [
   },
   {
     id: "hrms-development",
-    num: "4.14",
+    num: "14",
     group: "Platforms",
     icon: Users,
     title: "HRMS Development",
@@ -542,10 +542,10 @@ export const SERVICES = [
       "HR process & compliance discovery",
       "System design",
       "Build & payroll validation",
-      "Rollout & training",
+      "Pilot payroll cycle & HR training",
     ],
     tech: ["Node.js", "PostgreSQL", "React/Next.js", "Biometric/attendance integrations"],
-    industries: ["All industries served"],
+    industries: ["Human Resources", "Education", "Healthcare", "Retail"],
     deliverables: [
       "HR & payroll system tailored to your policies",
       "Compliance rule configuration",
@@ -566,7 +566,7 @@ export const SERVICES = [
   },
   {
     id: "procurement-solutions",
-    num: "4.15",
+    num: "15",
     group: "Platforms",
     icon: Bot,
     title: "Procurement Solutions",
@@ -581,11 +581,11 @@ export const SERVICES = [
     process: [
       "Procurement workflow discovery",
       "System & vendor portal design",
-      "Build & testing",
-      "Rollout & training",
+      "Approval workflow build & testing",
+      "Vendor onboarding & rollout",
     ],
     tech: ["Node.js", "PostgreSQL", "React/Next.js"],
-    industries: ["Manufacturing", "Construction", "Government", "Retail"],
+    industries: ["Retail", "Healthcare", "Real Estate"],
     deliverables: [
       "Documented procurement workflow",
       "Purchase order & approval system",
@@ -606,7 +606,7 @@ export const SERVICES = [
   },
   {
     id: "e-commerce-development",
-    num: "4.16",
+    num: "16",
     group: "Platforms",
     icon: ShoppingCart,
     title: "E-Commerce Development",
@@ -625,12 +625,12 @@ export const SERVICES = [
       "Launch & performance testing",
     ],
     tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe/Razorpay", "Headless commerce platforms"],
-    industries: ["Retail", "Hospitality", "Manufacturing"],
+    industries: ["Retail", "Healthcare"],
     deliverables: [
       "Production e-commerce storefront",
       "Admin & inventory management system",
       "Payment & logistics integrations",
-      "Launch support",
+      "Payment, shipping & go-live support",
     ],
     faqs: [
       {
@@ -646,7 +646,7 @@ export const SERVICES = [
   },
   {
     id: "qa-software-testing",
-    num: "4.17",
+    num: "17",
     group: "Quality",
     icon: ShieldCheck,
     title: "QA & Software Testing",
@@ -665,7 +665,7 @@ export const SERVICES = [
       "Reporting",
     ],
     tech: ["Jest", "Cypress", "Selenium", "Playwright"],
-    industries: ["All industries served"],
+    industries: ["Banking & Finance", "Healthcare"],
     deliverables: [
       "Test strategy documentation",
       "Automated test suite",
@@ -686,7 +686,7 @@ export const SERVICES = [
   },
   {
     id: "application-modernization",
-    num: "4.18",
+    num: "18",
     group: "Modernize",
     icon: RefreshCw,
     title: "Application Modernization",
@@ -700,12 +700,12 @@ export const SERVICES = [
     ],
     process: [
       "Codebase & architecture audit",
-      "Modernization roadmap",
-      "Phased implementation",
+      "Sequencing & risk assessment",
+      "Incremental refactor & release",
       "Validation & handover",
     ],
     tech: ["Varies by existing stack", "Node.js", "React", "Cloud-native infrastructure"],
-    industries: ["Banking & Finance", "Manufacturing", "Government", "Insurance"],
+    industries: ["Banking & Finance", "Healthcare", "Education"],
     deliverables: [
       "Technical audit report",
       "Modernization roadmap",
@@ -726,7 +726,7 @@ export const SERVICES = [
   },
   {
     id: "legacy-system-migration",
-    num: "4.19",
+    num: "19",
     group: "Modernize",
     icon: MoveRight,
     title: "Legacy System Migration",
@@ -745,7 +745,7 @@ export const SERVICES = [
       "Cutover & support",
     ],
     tech: ["Varies by source/target systems", "ETL tooling", "Cloud infrastructure"],
-    industries: ["Banking & Finance", "Government", "Manufacturing", "Insurance"],
+    industries: ["Banking & Finance", "Real Estate", "Education"],
     deliverables: [
       "Migration plan & data mapping",
       "Staged migration execution",
@@ -766,7 +766,7 @@ export const SERVICES = [
   },
   {
     id: "it-consulting",
-    num: "4.20",
+    num: "20",
     group: "Advisory",
     icon: Lightbulb,
     title: "IT Consulting",
@@ -784,8 +784,8 @@ export const SERVICES = [
       "Roadmap & recommendations",
       "Optional implementation support",
     ],
-    tech: ["Technology-agnostic assessment, grounded in the full stack in Section 9"],
-    industries: ["All industries served"],
+    tech: ["AWS · Azure · Google Cloud", "React · Node.js · Python · .NET", "C4 architecture modelling", "Cloud cost & performance analysis"],
+    industries: ["Healthcare", "Education", "Banking & Finance", "Real Estate"],
     deliverables: [
       "Technical assessment report",
       "Prioritized roadmap",
@@ -798,15 +798,15 @@ export const SERVICES = [
         a: "No — recommendations are made independent of whether Justonclick delivers the implementation.",
       },
       {
-        q: "How long does an assessment take?",
-        a: "Typically 2-4 weeks depending on system complexity, agreed upfront.",
+        q: "What do we receive at the end of an assessment?",
+        a: "A technical assessment report, architecture recommendations, and a prioritized roadmap you can act on with or without us.",
       },
     ],
     cta: "Book a Consulting Session",
   },
   {
     id: "managed-it-services",
-    num: "4.21",
+    num: "21",
     group: "Advisory",
     icon: LifeBuoy,
     title: "Managed IT Services",
@@ -824,11 +824,11 @@ export const SERVICES = [
       "Ongoing operation & support",
       "Regular review & reporting",
     ],
-    tech: ["AWS/Azure/GCP", "Monitoring & alerting tooling"],
-    industries: ["All industries served"],
+    tech: ["AWS · Azure · Google Cloud", "Monitoring & alerting tooling", "Backups & disaster recovery", "Patch & update management"],
+    industries: ["Healthcare", "Real Estate", "Human Resources"],
     deliverables: [
       "SLA agreement & escalation process",
-      "Monitoring & alerting setup",
+      "24/7 monitoring with defined escalation",
       "Ongoing support & incident response",
       "Regular performance reporting",
     ],
@@ -846,7 +846,7 @@ export const SERVICES = [
   },
   {
     id: "staff-augmentation",
-    num: "4.22",
+    num: "22",
     group: "Teams",
     icon: UserPlus,
     title: "Staff Augmentation",
@@ -864,8 +864,8 @@ export const SERVICES = [
       "Onboarding into your process",
       "Ongoing performance check-ins",
     ],
-    tech: ["Matched to your existing stack"],
-    industries: ["All industries served"],
+    tech: ["React · Angular · Vue.js", "Node.js · Java · .NET · Python", "React Native · Flutter", "QA automation (Cypress, Playwright)"],
+    industries: ["Banking & Finance", "Human Resources", "Healthcare"],
     deliverables: [
       "Matched engineer(s) onboarded to your team",
       "Regular check-ins on fit and performance",
@@ -885,7 +885,7 @@ export const SERVICES = [
   },
   {
     id: "dedicated-development-teams",
-    num: "4.23",
+    num: "23",
     group: "Teams",
     icon: MonitorSmartphone,
     title: "Dedicated Development Teams",
@@ -903,8 +903,8 @@ export const SERVICES = [
       "Sprint-based delivery",
       "Ongoing roadmap alignment",
     ],
-    tech: ["Matched to your product's stack"],
-    industries: ["All industries served"],
+    tech: ["Full-stack web (React, Node.js)", "Mobile (React Native, Flutter)", "Cloud & DevOps (AWS, Docker, Kubernetes)", "QA automation"],
+    industries: ["Retail", "Education", "Human Resources", "Banking & Finance"],
     deliverables: [
       "A dedicated cross-functional team",
       "Sprint-based delivery cadence",

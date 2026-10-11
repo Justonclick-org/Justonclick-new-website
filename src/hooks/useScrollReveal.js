@@ -3,14 +3,19 @@ import { useEffect } from "react";
 /**
  * Plays the reveal animation every time an element enters the viewport.
  * Resets when it leaves so it can animate again on next entry.
+ * Elements added after mount (tab filters, route content) are picked up too.
  */
 export function useScrollReveal() {
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll(".joc-reveal"));
+    const collect = (root) =>
+      root.querySelectorAll ? Array.from(root.querySelectorAll(".joc-reveal")) : [];
 
     if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("joc-visible"));
-      return;
+      const showAll = () => collect(document).forEach((el) => el.classList.add("joc-visible"));
+      showAll();
+      const mo = new MutationObserver(showAll);
+      mo.observe(document.body, { childList: true, subtree: true });
+      return () => mo.disconnect();
     }
 
     const observer = new IntersectionObserver(
@@ -39,8 +44,23 @@ export function useScrollReveal() {
       }
     );
 
-    els.forEach((el) => observer.observe(el));
+    collect(document).forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    // Observe reveal elements rendered later, e.g. after switching a filter tab.
+    const mutations = new MutationObserver((records) => {
+      records.forEach((record) =>
+        record.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.classList.contains("joc-reveal")) observer.observe(node);
+          collect(node).forEach((el) => observer.observe(el));
+        })
+      );
+    });
+    mutations.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutations.disconnect();
+    };
   }, []);
 }

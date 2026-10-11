@@ -1,0 +1,195 @@
+/* Careers page — unique prefix: joccareers- */
+
+.joccareers-wrap {
+  overflow-x: hidden;
+}
+
+.joccareers-section {
+  padding: 4.5rem 0;
+}
+
+.joccareers-section-alt {
+  background: var(--joc-surface-alt);
+  border-top: 1px solid var(--joc-line);
+  border-bottom: 1px solid var(--joc-line);
+}
+
+.joccareers-eyebrow {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--joc-orange-dark);
+}
+
+.joccareers-heading {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  margin: 0.6rem 0 0;
+}
+
+/* ---------- cards ---------- */
+.joccareers-card,
+.joccareers-step,
+.joccareers-job {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 1.8rem;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--joc-line);
+  box-shadow: var(--joc-shadow-sm);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.joccareers-card:hover,
+.joccareers-step:hover,
+.joccareers-job:hover {
+  transform: translateY(-5px);
+  border-color: var(--joc-blue);
+  box-shadow: var(--joc-shadow-md);
+}
+
+.joccareers-card-icon {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--joc-blue-light);
+  color: var(--joc-blue-dark);
+  margin-bottom: 1rem;
+}
+
+.joccareers-card h3,
+.joccareers-step h3,
+.joccareers-job h3,
+.joccareers-empty h3 {
+  font-size: 1.12rem;
+  margin-bottom: 0.5rem;
+}
+
+.joccareers-card p,
+.joccareers-step p,
+.joccareers-job p,
+.joccareers-empty p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.joccareers-step-num {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--joc-blue-light);
+}
+
+/* ---------- openings ---------- */
+.joccareers-empty {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+  padding: 1.8rem;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px dashed var(--joc-blue);
+}
+
+.joccareers-empty .joccareers-card-icon {
+  margin: 0;
+}
+
+.joccareers-empty .jocpage-btn {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.joccareers-job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--joc-blue-dark);
+}
+
+.joccareers-job-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.joccareers-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 1.3rem;
+}
+
+.joccareers-skills span {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--joc-orange-light);
+  color: var(--joc-orange-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.joccareers-job .jocpage-btn {
+  margin-top: 1.2rem;
+}
+
+.joccareers-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 2rem 0 0;
+  font-size: 0.92rem;
+}
+
+.joccareers-note svg {
+  color: var(--joc-orange-dark);
+}
+
+/* ---------- cta ---------- */
+.joccareers-cta {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-radius: 28px;
+  background:
+    radial-gradient(520px 260px at 10% 0%, var(--joc-blue-light) 0%, transparent 70%),
+    radial-gradient(520px 260px at 90% 100%, var(--joc-orange-light) 0%, transparent 70%),
+    #fff;
+  border: 1px solid var(--joc-line);
+}
+
+.joccareers-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+@media (max-width: 767.98px) {
+  .joccareers-section {
+    padding: 3.2rem 0;
+  }
+
+  .joccareers-empty {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .joccareers-empty .jocpage-btn {
+    margin-left: 0;
+  }
+}
