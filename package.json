@@ -2,7 +2,7 @@
   "name": "justonclick",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://justonclick-org.github.io/Justonclick-new-website",
+  "homepage": "https://justonclick.in",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/copy-404.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
