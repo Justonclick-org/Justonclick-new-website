@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import logo from "../assets/Justonclick-final.png";
-import { CONTACT } from "../../utils/constants";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { CONTACT, SOCIAL } from "../../utils/constants";
 import "./Footer.css";
 
 const COMPANY = [
@@ -22,6 +23,8 @@ const EXPERTISE = [
   { label: "Technologies", to: "/technologies" },
 ];
 
+const SOCIAL_ICONS = { LinkedIn: FaLinkedinIn };
+
 function Footer() {
   return (
     <footer className="jocfoot-wrap">
@@ -32,37 +35,21 @@ function Footer() {
         <Row className="g-5">
           {/* Brand Column */}
           <Col lg={4} md={12}>
-            <img src={logo} alt="Justonclick logo" className="jocfoot-logo" />
+            <img src={logo} alt="Justonclick logo" className="jocfoot-logo" width={400} height={90} />
             <p className="jocfoot-about">
               Justonclick designs, builds, and operates custom software, cloud
               infrastructure, and AI-driven systems — and runs its own HRMS &
               Payroll platform in production every day.
             </p>
             <div className="jocfoot-social">
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                In
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="X"
-              >
-                X
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
-                Gh
-              </a>
+              {SOCIAL.map(({ label, url }) => {
+                const Icon = SOCIAL_ICONS[label];
+                return (
+                  <a key={label} href={url} target="_blank" rel="noreferrer" aria-label={label}>
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
             </div>
           </Col>
 

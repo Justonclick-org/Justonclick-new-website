@@ -7,3 +7,8 @@ export const CONTACT = {
   addressLines: ["Samarth Colony, Vishal Nagar", "Pimple Nilakh, Pune 411027", "Maharashtra, India"],
   mapQuery: "Samarth Colony, Vishal Nagar, Pimple Nilakh, Pune 411027",
 };
+
+/** Company social profiles shown in the footer. */
+export const SOCIAL = [
+  { label: "LinkedIn", url: "https://www.linkedin.com/company/145173940" },
+];

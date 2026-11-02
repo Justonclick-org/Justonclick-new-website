@@ -1,11 +1,9 @@
 // App entry component
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WebsiteRoutes from "./routes/WebsiteRoutes";
-import AdminRoutes from "./routes/AdminRoutes";
+// import AdminRoutes from "./routes/AdminRoutes";
 // import AuthProvider from "./context/AuthContext";
-import ScrollToTop from "./components/ScrollToTop ";          // ← fixed
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import ScrollToTop from "./components/ScrollToTop";
 // import CookieConsent from "./components/layout/CookieConsent";
 
 function App() {
@@ -18,8 +16,8 @@ function App() {
           {/* Public Website */}
           <Route path="/*" element={<WebsiteRoutes />} />
 
-          {/* Admin Section */}
-          <Route path="/admin/*" element={<AdminRoutes />} />
+          {/* Admin Section — not public yet */}
+          {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
         </Routes>
       {/* </AuthProvider> */}
     </BrowserRouter>

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import {
   ArrowRight,
@@ -16,6 +16,7 @@ import {
   Lock,
   Plug,
   Rocket,
+  Send,
   ShoppingCart,
   Sparkles,
   Target,
@@ -24,6 +25,7 @@ import {
   Users,
   Wallet,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { CONTACT } from "../../utils/constants";
 import hrmsShot from "../../components/assets/products/hrms-home.jpg";
@@ -136,7 +138,19 @@ const HRMS = {
   ],
 };
 
-const ROADMAP = [
+const HRMS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: HRMS.name,
+  description: HRMS.summary,
+  url: HRMS.url,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, Android",
+  featureList: HRMS.modules.map((m) => m.title),
+  publisher: { "@id": "https://justonclick.in/#organization" },
+};
+
+export const ROADMAP = [
   {
     icon: ShoppingCart,
     title: "Procurement Management System",
@@ -169,28 +183,60 @@ const ROADMAP = [
   },
 ];
 
-function DemoForm({ product }) {
+const DEMO_FIELDS = [
+  { id: "name", label: "Name *", type: "text", required: true },
+  { id: "email", label: "Work Email *", type: "email", required: true },
+  { id: "company", label: "Company", type: "text" },
+  { id: "phone", label: "Phone", type: "tel" },
+];
+
+function DemoForm({ product, productName }) {
+  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", size: "", message: "" });
+
+  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = `Demo request — ${productName} from ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.company && `Company: ${form.company}`,
+      form.phone && `Phone: ${form.phone}`,
+      form.size && `Company size: ${form.size}`,
+      "",
+      form.message,
+    ]
+      .filter((line) => line !== false && line !== "")
+      .join("\n");
+    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
-    <div className="jocproducts-form joc-reveal joc-rv-blur">
+    <form className="jocproducts-form joc-reveal joc-rv-blur" onSubmit={submit}>
       <span className="joc-bubble" />
       <h4 className="jocproducts-heading" style={{ fontSize: "1.15rem" }}>
         Request a demo
       </h4>
       <Row className="g-3">
-        {[
-          { id: "name", label: "Name", type: "text" },
-          { id: "email", label: "Work Email", type: "email" },
-          { id: "company", label: "Company", type: "text" },
-          { id: "phone", label: "Phone", type: "tel" },
-        ].map((f) => (
+        {DEMO_FIELDS.map((f) => (
           <Col md={6} key={f.id}>
             <label htmlFor={`${product}-${f.id}`}>{f.label}</label>
-            <input id={`${product}-${f.id}`} name={f.id} type={f.type} />
+            <input
+              id={`${product}-${f.id}`}
+              name={f.id}
+              type={f.type}
+              required={f.required}
+              value={form[f.id]}
+              onChange={update}
+            />
           </Col>
         ))}
         <Col md={12}>
           <label htmlFor={`${product}-size`}>Company Size</label>
-          <select id={`${product}-size`} name="size" defaultValue="">
+          <select id={`${product}-size`} name="size" value={form.size} onChange={update}>
             <option value="">Select</option>
             <option>1-10</option>
             <option>11-50</option>
@@ -200,15 +246,23 @@ function DemoForm({ product }) {
         </Col>
         <Col xs={12}>
           <label htmlFor={`${product}-message`}>Message</label>
-          <textarea id={`${product}-message`} name="message" rows={4} />
+          <textarea
+            id={`${product}-message`}
+            name="message"
+            rows={4}
+            value={form.message}
+            onChange={update}
+          />
         </Col>
       </Row>
+      <button type="submit" className="jocpage-btn jocproducts-submit mt-4">
+        Request Demo <Send size={16} />
+      </button>
       <p className="jocproducts-form-note mb-0">
-        Prefer email? Send the same details to{" "}
-        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or call{" "}
-        <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> and we'll set up a walkthrough.
+        Sending opens your email app with these details addressed to {CONTACT.email}. Prefer to
+        talk? Call <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> and we'll set up a walkthrough.
       </p>
-    </div>
+    </form>
   );
 }
 
@@ -377,7 +431,7 @@ function ProductBlock({ p }) {
         ) : null}
 
         <h3 className="jocproducts-subheading joc-reveal joc-rv-drop">Demo Request Form</h3>
-        <DemoForm product={p.id} />
+        <DemoForm product={p.id} productName={p.name} />
       </Container>
     </section>
   );
@@ -385,9 +439,26 @@ function ProductBlock({ p }) {
 
 function Products() {
   useScrollReveal();
+  const { hash } = useLocation();
+
+  // Scroll to a section such as #roadmap when arriving from another page.
+  useEffect(() => {
+    if (!hash) return undefined;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [hash]);
 
   return (
     <main className="jocproducts-wrap">
+      <Seo
+        title="HRMS & Payroll Software for Indian Businesses | Justonclick HRMS"
+        description="Justonclick HRMS & Payroll: geo-fenced attendance with face verification, leave, payroll with PF, ESI, professional tax and TDS, recruitment and employee self-service on web and Android."
+        path="/products"
+        jsonLd={HRMS_JSONLD}
+      />
       {/* 5.1 Hero */}
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
@@ -395,7 +466,7 @@ function Products() {
           <div className="jocpage-hero-inner">
             <span className="jocpage-eyebrow joc-reveal joc-rv-drop">Our Products</span>
             <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-              <span>Software we build, run, and stand behind.</span>
+              <span>HRMS & payroll software we build, run, and stand behind.</span>
             </h1>
             <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
               Alongside our services work, Justonclick designs, builds, and personally operates its
@@ -435,7 +506,7 @@ function Products() {
       </section>
 
       {/* 5.5 Roadmap */}
-      <section className="jocproducts-section jocproducts-section-alt">
+      <section className="jocproducts-section jocproducts-section-alt" id="roadmap">
         <Container>
           <span className="jocproducts-eyebrow joc-reveal joc-rv-spin">
             Product Roadmap (Planned, Not Yet Built)

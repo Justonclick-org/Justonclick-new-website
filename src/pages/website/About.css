@@ -456,3 +456,60 @@
     padding: 3rem 0;
   }
 }
+
+/* White bubble on the coloured Vision / Mission cards */
+.jocabout-pillar .joc-bubble {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.06) 70%);
+}
+.jocabout-pillar .joc-bubble::before {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.jocabout-pillar .joc-bubble::after {
+  background: #fff;
+  opacity: 0.7;
+}
+
+/* Future development */
+.jocabout-future h3 {
+  font-size: 1.25rem;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.jocabout-future-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.jocabout-future-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--joc-blue-light);
+  border: 1px solid var(--joc-line);
+  color: var(--joc-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.jocabout-future-list li svg {
+  color: var(--joc-blue-dark);
+}
+
+.jocabout-future-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--joc-orange-dark);
+  text-decoration: none;
+}
+
+.jocabout-future-link:hover {
+  color: var(--joc-orange);
+}

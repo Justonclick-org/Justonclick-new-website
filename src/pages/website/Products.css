@@ -368,6 +368,11 @@
   box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.14);
 }
 
+.jocproducts-submit {
+  border: 0;
+  cursor: pointer;
+}
+
 .jocproducts-form-note {
   font-size: 0.85rem;
   color: var(--joc-body);

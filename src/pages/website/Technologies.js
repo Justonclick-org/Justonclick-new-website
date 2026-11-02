@@ -17,6 +17,7 @@ import {
   Gauge,
   BadgeCheck,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import heroImg from "../../components/assets/technologies-hero.jpg";
 import "./Technologies.css";
@@ -316,6 +317,11 @@ function Technologies() {
 
   return (
     <main className="joctechnologies-wrap">
+      <Seo
+        title="Technology Stack | React, Node.js, Python, AWS, Azure & AI | Justonclick"
+        description="The technologies Justonclick builds with: React, Next.js, Node.js, Python, .NET, React Native, Flutter, AWS, Azure, Google Cloud, Docker, Kubernetes and AI tooling."
+        path="/technologies"
+      />
       {/* ---------------- Hero ---------------- */}
       <section className="joctech-hero">
         <span className="joctech-hero-grid" />
@@ -326,8 +332,8 @@ function Technologies() {
             <Col lg={6}>
               <span className="joctech-eyebrow joc-reveal">Technology Expertise</span>
               <h1 className="joctech-hero-title joc-reveal">
-                The stack we <span className="joctech-grad-text">build with</span> — and
-                stand behind
+                Our technology stack: what we{" "}
+                <span className="joctech-grad-text">build with</span> and stand behind
               </h1>
               <p className="joctech-hero-text joc-reveal">
                 Every entry below is a real, production-proven capability — the same stack
@@ -360,8 +366,8 @@ function Technologies() {
                   <img
                     src={heroImg}
                     alt="Justonclick technology stack illustration"
-                    // width={1024}
-                    // height={1024}
+                    width={1024}
+                    height={1024}
                   />
                   <span className="joctech-hero-sheen" />
                 </div>

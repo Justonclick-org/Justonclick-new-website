@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { POSTS } from "./blogData";
 import "./Pages.css";
@@ -27,13 +28,18 @@ function Blog() {
 
   return (
     <main className="jocblog-wrap">
+      <Seo
+        title="Blog & Insights | HR, Payroll & Attendance Guides | Justonclick"
+        description="Practical guides on payroll, statutory compliance (PF, ESI, TDS) and attendance from the team that builds and runs Justonclick HRMS."
+        path="/blog"
+      />
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
         <Container>
           <div className="jocpage-hero-inner">
             <span className="jocpage-eyebrow joc-reveal joc-rv-drop">Blog & Insights</span>
             <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-              <span>Writing from the team doing the work.</span>
+              <span>HR, payroll & attendance insights from the team doing the work.</span>
             </h1>
             <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
               Practical guides on HR, payroll, and the software that runs them — drawn from

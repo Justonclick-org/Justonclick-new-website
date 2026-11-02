@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { ArrowRight, Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { CONTACT } from "../../utils/constants";
 import { SERVICES } from "./servicesData";
@@ -64,6 +65,11 @@ function Contact() {
 
   return (
     <main className="joccontact-wrap">
+      <Seo
+        title="Contact Justonclick | Software Development Company in Pune"
+        description="Talk to Justonclick about custom software, apps, cloud, AI or HRMS & Payroll. Call +91 97634 93333, email info@justonclick.in, or visit us in Pimple Nilakh, Pune."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
@@ -71,7 +77,7 @@ function Contact() {
           <div className="jocpage-hero-inner">
             <span className="jocpage-eyebrow joc-reveal joc-rv-drop">Contact Us</span>
             <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-              <span>Let's talk about what you're building.</span>
+              <span>Talk to our Pune software development team about what you're building.</span>
             </h1>
             <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
               A new product, a platform that has outgrown its spreadsheets, or a website that needs

@@ -32,17 +32,18 @@ import {
   ShoppingBag,
   Stethoscope,
 } from "lucide-react";
-import heroImage from "../../components/assets/home-hero.png";
+import heroImage from "../../components/assets/home-hero.webp";
 import hrmsShot from "../../components/assets/products/hrms-home.jpg";
 import hrmsLogo from "../../components/assets/products/hrms-logo.svg";
 import { CLIENTS, TESTIMONIALS } from "./clientsData";
 import { POSTS } from "./blogData";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useCardGlow } from "../../hooks/useCardGlow";
 import "./Home.css";
 
 const STATS = [
-  { value: "2+", label: "Years of Experience" },
+  { value: "3+", label: "Years of Experience" },
   { value: String(CLIENTS.length), label: "Client Projects Live" },
   { value: "1", label: "SaaS Product in Production" },
   { value: "India", label: "Clients Served Across" },
@@ -217,6 +218,7 @@ const WORK = [
     text: "Our own HR, attendance, and payroll platform — designed, built, and run in daily production.",
     image: hrmsShot,
     logo: hrmsLogo,
+    logoSize: [194, 66],
     to: "/products",
     cta: "Explore the product",
   },
@@ -227,6 +229,7 @@ const WORK = [
     text: c.summary,
     image: c.screenshot,
     logo: c.logo,
+    logoSize: c.logoSize,
     href: c.url,
     cta: `Visit ${c.domain}`,
   })),
@@ -246,6 +249,11 @@ function Home() {
 
   return (
     <main>
+      <Seo
+        title="Justonclick | Software Development Company in Pune — Custom Software, Cloud & AI"
+        description="Justonclick is a Pune-based software development company building custom software, web and mobile apps, cloud and AI solutions — and the team behind Justonclick HRMS & Payroll."
+        path="/"
+      />
       {/* 2.1 Hero */}
       <section className="jochome-hero">
         <span className="jochome-hero-grid" />
@@ -259,7 +267,7 @@ function Home() {
                 IT Services & Digital Engineering · Pune, India
               </span>
               <h1 className="jochome-hero-title joc-reveal" style={delay(1)}>
-                Engineering software that <span>runs your business</span>, not just launches it.
+                Custom software development that <span>runs your business</span>, not just launches it.
               </h1>
               <p className="jochome-hero-text joc-reveal" style={delay(2)}>
                 We design, build, and operate custom software, cloud infrastructure, and AI-driven
@@ -341,7 +349,7 @@ function Home() {
                   rel="noreferrer"
                   className="jochome-trust-item jochome-trust-logo"
                 >
-                  <img src={c.logo} alt={`${c.name} logo`} />
+                  <img src={c.logo} alt={`${c.name} logo`} width={c.logoSize[0]} height={c.logoSize[1]} />
                   <span>{c.name}</span>
                 </a>
               ))}
@@ -653,7 +661,7 @@ function Home() {
                   <div className="jochome-work-shot">
                     <img src={w.image} alt={`${w.title} website`} width={1440} height={900} loading="lazy" />
                     <span className="jochome-work-logo">
-                      <img src={w.logo} alt={`${w.title} logo`} />
+                      <img src={w.logo} alt={`${w.title} logo`} width={w.logoSize[0]} height={w.logoSize[1]} />
                     </span>
                   </div>
                   <div className="jochome-work-body">
@@ -698,7 +706,13 @@ function Home() {
                 <Col key={c.id} lg={6}>
                   <blockquote className="jochome-quote h-100 joc-reveal joc-rv-blur" style={delay(i)}>
                     <span className={`joc-bubble${i % 2 ? "" : " joc-bubble-orange"}`} />
-                    <img className="jochome-quote-logo" src={c.logo} alt={`${c.name} logo`} />
+                    <img
+                      className="jochome-quote-logo"
+                      src={c.logo}
+                      alt={`${c.name} logo`}
+                      width={c.logoSize[0]}
+                      height={c.logoSize[1]}
+                    />
                     <p>{c.testimonial.quote}</p>
                     <footer>
                       <strong>

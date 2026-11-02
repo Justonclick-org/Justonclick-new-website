@@ -19,7 +19,8 @@ export const POSTS = [
     title: "Payroll and Statutory Compliance Without the Month-End Scramble",
     excerpt:
       "Why spreadsheet payroll breaks as teams grow, and how a structured payroll run with built-in PF, ESI, professional tax and TDS turns month-end into a routine review.",
-    date: "October 2026",
+    date: "14 October 2026",
+    published: "2026-10-14",
     readTime: "6 min read",
     cover: payrollRun,
     coverAlt: "Monthly payroll run in Justonclick HRMS showing gross, deductions and net pay per employee",
@@ -108,7 +109,8 @@ export const POSTS = [
     title: "Attendance You Can Trust: Geo-Fencing, Face Verification and Approvals",
     excerpt:
       "Proxy punches, missed check-outs and untracked work-from-home days quietly distort payroll. Here is how to record attendance where the work actually happens.",
-    date: "October 2026",
+    date: "28 October 2026",
+    published: "2026-10-28",
     readTime: "5 min read",
     cover: attendancePunch,
     coverAlt: "My Attendance screen in Justonclick HRMS showing check-in and check-out times",

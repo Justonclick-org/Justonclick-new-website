@@ -13,6 +13,7 @@ import {
   Search,
   ShieldCheck,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { CONTACT } from "../../utils/constants";
 import "./Pages.css";
@@ -78,6 +79,11 @@ function Careers() {
 
   return (
     <main className="joccareers-wrap">
+      <Seo
+        title="Careers at Justonclick | Software Developer Jobs in Pune"
+        description="Join Justonclick in Pune and build client platforms and our own production software with React, Node.js, Python, cloud and AI. Send your CV to apply."
+        path="/careers"
+      />
       {/* Hero */}
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
@@ -85,7 +91,7 @@ function Careers() {
           <div className="jocpage-hero-inner">
             <span className="jocpage-eyebrow joc-reveal joc-rv-drop">Careers</span>
             <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-              <span>Build software people rely on every day.</span>
+              <span>Software jobs in Pune: build software people rely on every day.</span>
             </h1>
             <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
               Justonclick is a Pune-based engineering company building client platforms and our

@@ -21,6 +21,7 @@ import {
   Globe,
   FileText,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import heroImg from "../../components/assets/case-studies-hero.jpg";
 import hrmsShot from "../../components/assets/products/hrms-home.jpg";
@@ -83,8 +84,56 @@ const CASES = [
     ],
   },
   {
-    id: "local-credit-solutions",
+    id: "astra-dental",
     num: "02",
+    title: "Astra Dental Clinic",
+    tag: "Client project",
+    accent: "orange",
+    reveal: "joc-rv-right",
+    icon: Stethoscope,
+    background:
+      "Astra Dental Clinic — a cosmetic and restorative dental clinic in Chembur, Mumbai, led by Dr. Amit Pawar (BDS, MDS).",
+    meta: [
+      {
+        icon: Building2,
+        label: "Industry",
+        value: "Healthcare — Dental Clinic",
+      },
+      {
+        icon: Globe,
+        label: "Live Link",
+        value: "https://astradental.co.in/",
+        href: "https://astradental.co.in/",
+      },
+    ],
+    problem:
+      "Patients choosing a dentist compare clinics online before they ever call. Astra Dental needed a website that reflected the care patients experience in the clinic, explained each treatment clearly, ranked for people searching for a dentist in Chembur, and made booking a visit as quick as sending a message.",
+    objectives: [
+      "Present the clinic, the doctor, and every treatment with clarity and credibility",
+      "Turn visitors into booked appointments with as little friction as possible",
+      "Be found by patients searching for dental care in Chembur and Mumbai",
+      "Deliver a fast, mobile-first site patients can use on any device",
+    ],
+    architecture:
+      "A React single-page site with a dedicated page for each treatment — implants, root canal, braces & aligners, cosmetic and paediatric dentistry, and smile makeovers — plus gallery, pricing, FAQs, team, and legal pages. The appointment form opens WhatsApp with the patient's details pre-filled, so the clinic receives booking requests where it already works, with no back-end to maintain.",
+    stack: ["React", "Vite", "React Router", "Bootstrap", "WhatsApp booking", "Google Analytics 4"],
+    screenshot: CLIENTS.find((c) => c.id === "astra-dental").screenshot,
+    process: ["Content & treatment structure", "Design", "Build & local SEO", "Launch"],
+    processNote:
+      "Each treatment got its own page with its own search metadata, so the site can rank for the specific treatment a patient is searching for, not only the clinic's name.",
+    challenges:
+      "Making booking effortless without adding a booking system the clinic would have to run — solved by handing the patient's details straight to WhatsApp, the channel the clinic already answers every day.",
+    results: [
+      "Live production website at astradental.co.in, serving as the clinic's primary web presence",
+      "Patients can book an appointment or start a WhatsApp consultation from any page",
+      "Dedicated, search-optimized pages for each treatment, with local SEO for Chembur and Mumbai",
+      "Responsive experience across desktop, tablet, and mobile",
+    ],
+    quote: TESTIMONIALS.find((c) => c.id === "astra-dental")?.testimonial,
+  },
+  {
+    id: "local-credit-solutions",
+    num: "03",
     title: "Local Credit Solutions",
     tag: "Client project",
     accent: "blue",
@@ -352,6 +401,11 @@ function CaseStudies() {
 
   return (
     <main className="joccase-wrap">
+      <Seo
+        title="Case Studies | Software Projects Delivered by Justonclick, Pune"
+        description="How Justonclick built HRMS & Payroll, a dental clinic website with WhatsApp booking, and a KYC provider's website — the problem, architecture, stack and results."
+        path="/case-studies"
+      />
       {/* ---------------- Hero ---------------- */}
       <section className="joccase-hero">
         <span className="joccase-hero-grid" />
@@ -362,9 +416,8 @@ function CaseStudies() {
             <Col lg={6}>
               <span className="joccase-eyebrow joc-reveal">Case Studies</span>
               <h1 className="joccase-hero-title joc-reveal">
-                Systems in{" "}
-                <span className="joccase-grad-text">daily production</span> — and what
-                they changed
+                Software development case studies: systems in{" "}
+                <span className="joccase-grad-text">daily production</span>
               </h1>
               <p className="joccase-hero-text joc-reveal">
                 How we approached each delivered project — the business problem, the
@@ -422,7 +475,7 @@ function CaseStudies() {
         <Container>
           <Row className="g-4">
             {CASES.map((cs, i) => (
-              <Col md={6} key={cs.id}>
+              <Col md={6} lg={4} key={cs.id}>
                 <a
                   href={`#${cs.id}`}
                   className="joccase-index-card joc-reveal joc-rv-zoom"
@@ -479,7 +532,13 @@ function CaseStudies() {
                     <span className="joccase-quote-mark" aria-hidden="true">
                       &ldquo;
                     </span>
-                    <img className="joccase-quote-logo" src={c.logo} alt={`${c.name} logo`} />
+                    <img
+                      className="joccase-quote-logo"
+                      src={c.logo}
+                      alt={`${c.name} logo`}
+                      width={c.logoSize[0]}
+                      height={c.logoSize[1]}
+                    />
                     <blockquote>
                       {c.testimonial.quote}
                     </blockquote>

@@ -12,6 +12,7 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { SERVICES, SERVICE_GROUPS } from "./servicesData"; // adjust path if needed
 import heroImg from "../../components/assets/services_img.jpg";
@@ -19,6 +20,24 @@ import "./Services.css";
 import "./Pages.css"; // adjust if Page.css is in a different location
 
 const delay = (i) => ({ transitionDelay: `${Math.min(i, 7) * 80}ms` });
+
+const SERVICES_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Justonclick software development services",
+  itemListElement: SERVICES.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.title,
+      description: s.overview,
+      url: `https://justonclick.in/services#${s.id}`,
+      provider: { "@id": "https://justonclick.in/#organization" },
+      areaServed: "IN",
+    },
+  })),
+};
 
 function ServiceBlock({ service, index }) {
   const [openFaq, setOpenFaq] = useState(0);
@@ -182,6 +201,12 @@ function Services() {
 
   return (
     <main className="jocservices-wrap">
+      <Seo
+        title="Software Development Services in Pune | Custom Software, Cloud, AI & Mobile Apps | Justonclick"
+        description="23 software development services from Justonclick, Pune: custom software, web and mobile app development, cloud, DevOps, AI & ML, ERP & CRM, HRMS, QA testing and dedicated teams."
+        path="/services"
+        jsonLd={SERVICES_JSONLD}
+      />
       {/* Hero */}
       <section className="jocservices-hero">
         <span className="jocservices-hero-grid" />
@@ -192,7 +217,7 @@ function Services() {
             <Col lg={6}>
               <span className="jocpage-eyebrow">23 service lines</span>
               <h1 className="jocservices-hero-title">
-                Services built around <span>your business</span>, not a template
+                Software development services built around <span>your business</span>
               </h1>
               <p className="jocpage-text">
                 From custom software and cloud to AI, quality engineering, and
@@ -226,7 +251,7 @@ function Services() {
               <div className="jocservices-hero-visual joc-reveal joc-rv-zoom">
                 <img
                   src={heroImg}
-                  alt="Justonclick engineering services"
+                  alt="Developer workstation with code editors and cloud deployment"
                   width={1280}
                   height={960}
                 />
