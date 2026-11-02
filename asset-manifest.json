@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.40939764.css",
-    "main.js": "/static/js/main.2b80cf32.js",
+    "main.css": "/static/css/main.5ffb090e.css",
+    "main.js": "/static/js/main.d4156af7.js",
     "static/js/453.2bb32486.chunk.js": "/static/js/453.2bb32486.chunk.js",
-    "static/media/home-hero.png": "/static/media/home-hero.5aa4bb7e5160574e29d5.png",
     "static/media/about-hero.jpg": "/static/media/about-hero.fee0deba1630411bdd26.jpg",
     "static/media/astra-dental-logo.png": "/static/media/astra-dental-logo.a93910d2e9f26ff41cf5.png",
     "static/media/hrms-home.jpg": "/static/media/hrms-home.4130c67110eeb42713d5.jpg",
     "static/media/astra-dental-site.jpg": "/static/media/astra-dental-site.2872f4e8ffcce745f50f.jpg",
     "static/media/payroll-pf-esic.jpg": "/static/media/payroll-pf-esic.0747b3a25b2bc8c230bf.jpg",
+    "static/media/home-hero.webp": "/static/media/home-hero.19b9456a7efe57d02c0b.webp",
     "static/media/lcs-site.jpg": "/static/media/lcs-site.6e25a0aac4bfd0cfb438.jpg",
     "static/media/services_img.jpg": "/static/media/services_img.bbe66579ca75d67ddbf7.jpg",
     "static/media/payroll-payslip.jpg": "/static/media/payroll-payslip.a9b1c7f50138f9ad8703.jpg",
@@ -21,12 +21,12 @@
     "static/media/lcs-logo.svg": "/static/media/lcs-logo.e4ee168a65939674c644e67ee20e05ad.svg",
     "static/media/hrms-logo.svg": "/static/media/hrms-logo.9b0fa950bf9027922e34c6b9f3981535.svg",
     "index.html": "/index.html",
-    "main.40939764.css.map": "/static/css/main.40939764.css.map",
-    "main.2b80cf32.js.map": "/static/js/main.2b80cf32.js.map",
+    "main.5ffb090e.css.map": "/static/css/main.5ffb090e.css.map",
+    "main.d4156af7.js.map": "/static/js/main.d4156af7.js.map",
     "453.2bb32486.chunk.js.map": "/static/js/453.2bb32486.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.40939764.css",
-    "static/js/main.2b80cf32.js"
+    "static/css/main.5ffb090e.css",
+    "static/js/main.d4156af7.js"
   ]
 }
