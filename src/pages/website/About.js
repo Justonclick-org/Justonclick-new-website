@@ -14,8 +14,10 @@ import {
   ShieldCheck,
   Target,
 } from "lucide-react";
+import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import aboutHero from "../../components/assets/about-hero.jpg";
+import { ROADMAP } from "./Products";
 import "./About.css";
 import "./Pages.css"; // or adjust path if Page.css is elsewhere
 
@@ -90,6 +92,11 @@ function About() {
 
   return (
     <main className="jocabout-wrap">
+      <Seo
+        title="About Justonclick | Software Engineering Company in Pune"
+        description="Justonclick is a Pune-based software engineering company that builds custom software for clients and runs its own HRMS & Payroll platform in daily production."
+        path="/about"
+      />
       {/* hero */}
       <section className="jocpage-hero">
         <span className="jocpage-hero-grid" />
@@ -99,7 +106,7 @@ function About() {
               <div className="jocpage-hero-inner jocabout-hero-copy">
                 <span className="jocpage-eyebrow joc-reveal joc-rv-drop">About Justonclick</span>
                 <h1 className="jocpage-title joc-reveal joc-rv-blur" style={delay(1)}>
-                  <span>Who we are, and why clients trust us</span>
+                  <span>A software development company in Pune that runs what it builds</span>
                 </h1>
                 <p className="jocpage-text joc-reveal joc-rv-left" style={delay(2)}>
                   A Pune-based engineering company that builds software for clients and runs its own
@@ -120,7 +127,7 @@ function About() {
               <div className="jocabout-hero-visual joc-reveal joc-rv-zoom" style={delay(2)}>
                 <img
                   src={aboutHero}
-                  alt="Justonclick product and engineering team collaborating in the studio"
+                  alt="Software team planning a user journey together around a table"
                   width={1280}
                   height={960}
                 />
@@ -147,7 +154,7 @@ function About() {
                 <span className="joc-bubble" />
                 <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
                 <p className="jocabout-text mb-0">
-                  Justonclick was founded on the belief that most software vendors never truly feel
+                  Justonclick was founded in 2023 on the belief that most software vendors never truly feel
                   the consequences of their own product decisions — because they don't use what they
                   build. We set out to be different by building a real product first: an HR & Payroll
                   platform that runs in daily production use today. That means every design decision, every edge case, and every support
@@ -163,7 +170,11 @@ function About() {
       {/* 3.2 & 3.3 Vision + Mission */}
       <section className="jocabout-section jocabout-section-alt">
         <Container>
-          <Row className="g-4">
+          <span className="jocabout-eyebrow joc-reveal joc-rv-drop">Vision & Mission</span>
+          <h2 className="jocabout-heading joc-reveal joc-rv-drop" style={delay(1)}>
+            Where we're going, and how we get there
+          </h2>
+          <Row className="g-4 mt-1">
             <Col lg={6}>
               <div className="jocabout-pillar jocabout-pillar-blue joc-reveal joc-rv-tilt">
                 <span className="joc-bubble" />
@@ -192,6 +203,31 @@ function About() {
                   needs to operate well — through custom engineering, cloud and AI expertise, and a
                   delivery model built around outcomes rather than handoffs.
                 </p>
+              </div>
+            </Col>
+            <Col xs={12}>
+              <div className="jocabout-story jocabout-future joc-reveal joc-rv-blur" style={delay(2)}>
+                <span className="joc-bubble" />
+                <span className="joc-bubble joc-bubble-bl joc-bubble-orange" />
+                <div className="jocabout-card-icon">
+                  <Rocket size={22} />
+                </div>
+                <h3>Future Development: what we're building next</h3>
+                <p className="jocabout-text">
+                  HRMS & Payroll is our first product, not our last. Next, we plan to turn the
+                  problems we solve most often for clients into products of our own — each one
+                  built, run, and proven in production before we offer it.
+                </p>
+                <ul className="jocabout-future-list">
+                  {ROADMAP.map((r) => (
+                    <li key={r.title}>
+                      <r.icon size={15} /> {r.title}
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/products#roadmap" className="jocabout-future-link">
+                  See the product roadmap <ArrowRight size={15} />
+                </Link>
               </div>
             </Col>
           </Row>

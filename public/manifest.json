@@ -1,0 +1,13 @@
+{
+  "short_name": "Justonclick",
+  "name": "Justonclick — Software Development Company in Pune",
+  "icons": [
+    { "src": "favicon.ico", "sizes": "16x16 32x32 48x48", "type": "image/x-icon" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#38bdf8",
+  "background_color": "#ffffff"
+}

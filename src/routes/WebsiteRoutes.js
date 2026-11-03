@@ -12,6 +12,7 @@ import CaseStudy from "../pages/website/CaseStudy";
 import Careers from "../pages/website/Careers";
 import Blog from "../pages/website/Blog";
 import BlogPost from "../pages/website/BlogPost";
+import NotFound from "../pages/website/NotFound";
 
 
 const WebsiteRoutes = () => {
@@ -94,6 +95,14 @@ const WebsiteRoutes = () => {
         element={
           <WebsiteLayout>
             <CaseStudy />
+          </WebsiteLayout>
+        }
+      />
+        <Route
+        path="*"
+        element={
+          <WebsiteLayout>
+            <NotFound />
           </WebsiteLayout>
         }
       />

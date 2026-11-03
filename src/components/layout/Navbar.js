@@ -54,6 +54,8 @@ function Navbar() {
           React.createElement("img", {
             src: logo,
             alt: "Justonclick logo",
+            width: 400,
+            height: 90,
           })
         ),
         // Desktop nav

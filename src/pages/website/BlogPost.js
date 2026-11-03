@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import Seo, { SITE_URL } from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { POSTS } from "./blogData";
 import { PostMeta } from "./Blog";
@@ -42,6 +43,12 @@ function BlogPost() {
   if (!post) {
     return (
       <main className="jocblog-wrap">
+        <Seo
+          title="Article not found | Justonclick Blog"
+          description="This article could not be found. Browse all Justonclick articles on HR, payroll and attendance."
+          path={`/blog/${slug}`}
+          noindex
+        />
         <section className="jocblog-section text-center">
           <Container>
             <h1 className="jocblog-missing">Article not found</h1>
@@ -58,6 +65,26 @@ function BlogPost() {
 
   return (
     <main className="jocblog-wrap" key={slug}>
+      <Seo
+        title={`${post.title} | Justonclick Blog`}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        image={post.cover}
+        type="article"
+        published={post.published}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          image: SITE_URL + post.cover,
+          url: `${SITE_URL}/blog/${post.slug}`,
+          articleSection: post.category,
+          datePublished: post.published,
+          author: { "@id": `${SITE_URL}/#organization` },
+          publisher: { "@id": `${SITE_URL}/#organization` },
+        }}
+      />
       <article>
         <header className="jocblog-post-hero">
           <Container>
