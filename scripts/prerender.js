@@ -84,7 +84,13 @@ async function main() {
     await new Promise((r) => setTimeout(r, 300));
 
     const { html, links, noindex } = await page.evaluate(() => ({
-      html: "<!DOCTYPE html>" + document.documentElement.outerHTML,
+      html:
+        "<!DOCTYPE html>" +
+        // Drop the gtm.js tag the GTM snippet injected, or GTM would load twice on the live page.
+        (document
+          .querySelectorAll('script[src*="googletagmanager.com/gtm.js"]')
+          .forEach((el) => el.remove()),
+        document.documentElement.outerHTML),
       links: Array.from(document.querySelectorAll("a[href^='/']"), (a) =>
         a.getAttribute("href").split(/[?#]/)[0].replace(/(.)\/$/, "$1")
       ),
