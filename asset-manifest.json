@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.5ffb090e.css",
-    "main.js": "/static/js/main.d4156af7.js",
+    "main.js": "/static/js/main.ddd561b4.js",
     "static/js/453.2bb32486.chunk.js": "/static/js/453.2bb32486.chunk.js",
     "static/media/about-hero.jpg": "/static/media/about-hero.fee0deba1630411bdd26.jpg",
     "static/media/astra-dental-logo.png": "/static/media/astra-dental-logo.a93910d2e9f26ff41cf5.png",
@@ -22,11 +22,11 @@
     "static/media/hrms-logo.svg": "/static/media/hrms-logo.9b0fa950bf9027922e34c6b9f3981535.svg",
     "index.html": "/index.html",
     "main.5ffb090e.css.map": "/static/css/main.5ffb090e.css.map",
-    "main.d4156af7.js.map": "/static/js/main.d4156af7.js.map",
+    "main.ddd561b4.js.map": "/static/js/main.ddd561b4.js.map",
     "453.2bb32486.chunk.js.map": "/static/js/453.2bb32486.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ffb090e.css",
-    "static/js/main.d4156af7.js"
+    "static/js/main.ddd561b4.js"
   ]
 }
