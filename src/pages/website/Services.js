@@ -13,6 +13,8 @@ import {
   Workflow,
 } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { SERVICES, SERVICE_GROUPS } from "./servicesData"; // adjust path if needed
 import heroImg from "../../components/assets/services_img.jpg";
@@ -169,9 +171,12 @@ function ServiceBlock({ service, index }) {
         </div>
 
         <div className="jocservices-block-cta joc-reveal joc-rv-spin">
-          <Link to="/contact" className="jocpage-btn">
+          <TrackedLink
+            to="/contact" className="jocpage-btn"
+            track={{ type: "contact", name: "service_enquiry", location: CTA_LOCATION.CONTENT_SECTION }}
+          >
             {service.cta} <ArrowRight size={17} />
-          </Link>
+          </TrackedLink>
         </div>
       </Container>
     </article>
@@ -225,9 +230,12 @@ function Services() {
                 by the same team that runs our own products in production.
               </p>
               <div className="jocpage-actions">
-                <Link to="/contact" className="jocpage-btn">
+                <TrackedLink
+                  to="/contact" className="jocpage-btn"
+                  track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.HERO }}
+                >
                   Schedule Consultation <ArrowRight size={17} />
-                </Link>
+                </TrackedLink>
                 <a href="#service-index" className="jocpage-btn-ghost">
                   Explore all 23 services
                 </a>
@@ -333,9 +341,12 @@ function Services() {
               engagement model — or tell you honestly if you don't need one.
             </p>
             <div className="jocpage-actions justify-content-center">
-              <Link to="/contact" className="jocpage-btn">
+              <TrackedLink
+                to="/contact" className="jocpage-btn"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/products" className="jocpage-btn-ghost">
                 See our products
               </Link>

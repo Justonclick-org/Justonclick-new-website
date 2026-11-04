@@ -4,6 +4,7 @@ import { Col, Container, Row } from "reactstrap";
 import { ArrowRight, Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 import Seo from "../../components/Seo";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useLeadFormTracking } from "../../hooks/useLeadFormTracking";
 import { CONTACT } from "../../utils/constants";
 import { SERVICES } from "./servicesData";
 import "./Pages.css";
@@ -40,11 +41,17 @@ const EMPTY = { name: "", email: "", phone: "", company: "", interest: "", messa
 function Contact() {
   useScrollReveal();
   const [form, setForm] = useState(EMPTY);
+  const { markStarted, markSuccess } = useLeadFormTracking("contact", "contact_us");
 
-  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const update = (e) => {
+    markStarted();
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const submit = (e) => {
     e.preventDefault();
+    // No backend: a valid submit hands the enquiry to the visitor's email app.
+    if (!e.currentTarget.checkValidity()) return;
     const topic = form.interest ? " — " + form.interest : "";
     const subject = `Project enquiry${topic} from ${form.name}`;
     const body = [
@@ -58,6 +65,7 @@ function Contact() {
     ]
       .filter((line) => line !== false && line !== "")
       .join("\n");
+    markSuccess();
     window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;

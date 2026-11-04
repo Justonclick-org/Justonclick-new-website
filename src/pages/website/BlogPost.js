@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import Seo, { SITE_URL } from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { POSTS } from "./blogData";
 import { PostMeta } from "./Blog";
@@ -116,9 +118,12 @@ function BlogPost() {
                 end to end.
               </p>
               <div className="jocpage-actions">
-                <Link to="/contact" className="jocpage-btn">
+                <TrackedLink
+                  to="/contact" className="jocpage-btn"
+                  track={{ type: "demo", name: "book_demo", location: CTA_LOCATION.CONTENT_SECTION }}
+                >
                   Book a Demo <ArrowRight size={16} />
-                </Link>
+                </TrackedLink>
                 <a
                   href="https://hrms.justonclick.in/"
                   target="_blank"

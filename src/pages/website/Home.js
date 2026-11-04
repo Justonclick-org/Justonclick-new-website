@@ -38,6 +38,8 @@ import hrmsLogo from "../../components/assets/products/hrms-logo.svg";
 import { CLIENTS, TESTIMONIALS } from "./clientsData";
 import { POSTS } from "./blogData";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useCardGlow } from "../../hooks/useCardGlow";
 import "./Home.css";
@@ -275,9 +277,12 @@ function Home() {
                 agency handing off a project and moving on.
               </p>
               <div className="jochome-hero-actions joc-reveal" style={delay(3)}>
-                <Link to="/contact" className="jochome-btn-primary">
+                <TrackedLink
+                  to="/contact" className="jochome-btn-primary"
+                  track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.HERO }}
+                >
                   Schedule Consultation <ArrowRight size={17} />
-                </Link>
+                </TrackedLink>
                 <Link to="/services" className="jochome-btn-secondary">
                   Explore Services <ArrowRight size={17} />
                 </Link>
@@ -781,9 +786,12 @@ function Home() {
               get back to you within one business day.
             </p>
             <div className="jochome-cta-actions">
-              <Link to="/contact" className="jochome-btn-primary">
+              <TrackedLink
+                to="/contact" className="jochome-btn-primary"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule a Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/services" className="jochome-btn-ghost">
                 View Our Services <ArrowRight size={17} />
               </Link>

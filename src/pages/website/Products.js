@@ -26,7 +26,10 @@ import {
   Wallet,
 } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useLeadFormTracking } from "../../hooks/useLeadFormTracking";
 import { CONTACT } from "../../utils/constants";
 import hrmsShot from "../../components/assets/products/hrms-home.jpg";
 import "./Products.css";
@@ -193,10 +196,17 @@ const DEMO_FIELDS = [
 function DemoForm({ product, productName }) {
   const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", size: "", message: "" });
 
-  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const { markStarted, markSuccess } = useLeadFormTracking("demo", "demo_request");
+
+  const update = (e) => {
+    markStarted();
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const submit = (e) => {
     e.preventDefault();
+    // No backend: a valid submit hands the request to the visitor's email app.
+    if (!e.currentTarget.checkValidity()) return;
     const subject = `Demo request — ${productName} from ${form.name}`;
     const body = [
       `Name: ${form.name}`,
@@ -209,6 +219,7 @@ function DemoForm({ product, productName }) {
     ]
       .filter((line) => line !== false && line !== "")
       .join("\n");
+    markSuccess();
     window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -474,9 +485,12 @@ function Products() {
               who it's built for, and how to get started.
             </p>
             <div className="jocpage-actions joc-reveal joc-rv-zoom" style={delay(3)}>
-              <Link to="/contact" className="jocpage-btn">
+              <TrackedLink
+                to="/contact" className="jocpage-btn"
+                track={{ type: "contact", name: "talk_to_us", location: CTA_LOCATION.HERO }}
+              >
                 Talk to Us About a Product <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/" className="jocpage-btn-ghost">
                 Back to home
               </Link>
@@ -549,9 +563,12 @@ function Products() {
               build the platform you need with the same team that runs ours.
             </p>
             <div className="jocproducts-cta-actions">
-              <Link to="/contact" className="jocpage-btn">
+              <TrackedLink
+                to="/contact" className="jocpage-btn"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule a Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/services" className="jocpage-btn-ghost">
                 View Our Services
               </Link>

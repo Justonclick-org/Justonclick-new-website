@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { CTA_LOCATION, trackCtaClick } from "../../utils/analytics";
 import { Collapse, Container } from "reactstrap";
 import logo from "../assets/Justonclick-final.png";
 import "./Navbar.css";
+
+const trackContactNav = (location) => () =>
+  trackCtaClick("contact", "contact_us", location);
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
@@ -79,6 +83,10 @@ function Navbar() {
                     className:
                       "jocnav-link" +
                       (pathname === item.to ? " jocnav-active" : ""),
+                    onClick:
+                      item.to === "/contact"
+                        ? trackContactNav(CTA_LOCATION.NAVIGATION)
+                        : undefined,
                   },
                   item.label
                 )
@@ -92,6 +100,8 @@ function Navbar() {
                 {
                   to: "/contact",
                   className: "jocnav-cta",
+                  onClick: () =>
+                    trackCtaClick("contact", "schedule_consultation", CTA_LOCATION.HEADER),
                 },
                 "Schedule Consultation"
               )
@@ -132,6 +142,10 @@ function Navbar() {
                   className:
                     "jocnav-link" +
                     (pathname === item.to ? " jocnav-active" : ""),
+                  onClick:
+                    item.to === "/contact"
+                      ? trackContactNav(CTA_LOCATION.MOBILE_MENU)
+                      : undefined,
                 },
                 item.label
               )
@@ -143,6 +157,8 @@ function Navbar() {
           {
             to: "/contact",
             className: "jocnav-cta mb-4",
+            onClick: () =>
+              trackCtaClick("contact", "schedule_consultation", CTA_LOCATION.MOBILE_MENU),
           },
           "Schedule Consultation"
         )

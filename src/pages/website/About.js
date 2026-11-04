@@ -15,6 +15,8 @@ import {
   Target,
 } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import aboutHero from "../../components/assets/about-hero.jpg";
 import { ROADMAP } from "./Products";
@@ -114,9 +116,12 @@ function About() {
                   already been tested on ourselves.
                 </p>
                 <div className="jocpage-actions joc-reveal joc-rv-zoom" style={delay(3)}>
-                  <Link to="/contact" className="jocpage-btn">
+                  <TrackedLink
+                    to="/contact" className="jocpage-btn"
+                    track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.HERO }}
+                  >
                     Schedule Consultation <ArrowRight size={17} />
-                  </Link>
+                  </TrackedLink>
                   <Link to="/products" className="jocpage-btn-ghost">
                     See our products
                   </Link>
@@ -348,9 +353,12 @@ function About() {
               problem; we'll bring questions, not a sales deck.
             </p>
             <div className="jocabout-cta-actions">
-              <Link to="/contact" className="jocpage-btn">
+              <TrackedLink
+                to="/contact" className="jocpage-btn"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule a Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/services" className="jocpage-btn-ghost">
                 View Our Services
               </Link>

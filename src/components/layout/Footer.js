@@ -4,6 +4,7 @@ import { Col, Container, Row } from "reactstrap";
 import logo from "../assets/Justonclick-final.png";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { CONTACT, SOCIAL } from "../../utils/constants";
+import { CTA_LOCATION, trackCtaClick } from "../../utils/analytics";
 import "./Footer.css";
 
 const COMPANY = [
@@ -11,7 +12,11 @@ const COMPANY = [
   { label: "Careers", to: "/careers" },
   { label: "Case Studies", to: "/case-studies" },
   { label: "Blog & Insights", to: "/blog" },
-  { label: "Contact", to: "/contact" },
+  {
+    label: "Contact",
+    to: "/contact",
+    onClick: () => trackCtaClick("contact", "contact_us", CTA_LOCATION.FOOTER),
+  },
 ];
 
 const EXPERTISE = [
@@ -59,7 +64,9 @@ function Footer() {
             <ul className="jocfoot-list">
               {COMPANY.map((item) => (
                 <li key={item.label}>
-                  <Link to={item.to}>{item.label}</Link>
+                  <Link to={item.to} onClick={item.onClick}>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -107,7 +114,14 @@ function Footer() {
         <div className="jocfoot-bottom">
           <span>© {new Date().getFullYear()} Justonclick. All rights reserved.</span>
           <span>
-            <Link to="/contact">Schedule a consultation</Link>
+            <Link
+              to="/contact"
+              onClick={() =>
+                trackCtaClick("contact", "schedule_consultation", CTA_LOCATION.FOOTER)
+              }
+            >
+              Schedule a consultation
+            </Link>
           </span>
         </div>
       </Container>
