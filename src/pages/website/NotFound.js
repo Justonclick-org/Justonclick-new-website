@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
 import { ArrowRight } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import "./Pages.css";
 
 function NotFound() {
@@ -33,9 +35,12 @@ function NotFound() {
               <Link to="/services" className="jocpage-btn-ghost">
                 Our services
               </Link>
-              <Link to="/contact" className="jocpage-btn-ghost">
+              <TrackedLink
+                to="/contact" className="jocpage-btn-ghost"
+                track={{ type: "contact", name: "contact_us", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Contact us
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </Container>

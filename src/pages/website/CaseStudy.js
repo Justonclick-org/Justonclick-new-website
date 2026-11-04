@@ -22,6 +22,8 @@ import {
   FileText,
 } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import heroImg from "../../components/assets/case-studies-hero.jpg";
 import hrmsShot from "../../components/assets/products/hrms-home.jpg";
@@ -425,9 +427,12 @@ function CaseStudies() {
                 results the system delivers today.
               </p>
               <div className="joccase-hero-actions joc-reveal">
-                <Link to="/contact" className="joccase-btn">
+                <TrackedLink
+                  to="/contact" className="joccase-btn"
+                  track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.HERO }}
+                >
                   Schedule Consultation <ArrowRight size={17} />
-                </Link>
+                </TrackedLink>
                 <Link to="/products" className="joccase-btn-ghost">
                   Explore Products
                 </Link>
@@ -573,9 +578,12 @@ function CaseStudies() {
               route to production.
             </p>
             <div className="joccase-hero-actions">
-              <Link to="/contact" className="joccase-btn">
+              <TrackedLink
+                to="/contact" className="joccase-btn"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/services" className="joccase-btn-ghost">
                 Explore Services
               </Link>

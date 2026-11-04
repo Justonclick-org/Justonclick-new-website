@@ -18,6 +18,8 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import Seo from "../../components/Seo";
+import TrackedLink from "../../components/TrackedLink";
+import { CTA_LOCATION } from "../../utils/analytics";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import heroImg from "../../components/assets/technologies-hero.jpg";
 import "./Technologies.css";
@@ -341,9 +343,12 @@ function Technologies() {
                 buzzwords: tools we ship with every day.
               </p>
               <div className="joctech-hero-actions joc-reveal">
-                <Link to="/contact" className="joctech-btn">
+                <TrackedLink
+                  to="/contact" className="joctech-btn"
+                  track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.HERO }}
+                >
                   Schedule Consultation <ArrowRight size={17} />
-                </Link>
+                </TrackedLink>
                 <Link to="/services" className="joctech-btn-ghost">
                   Explore Services
                 </Link>
@@ -469,9 +474,12 @@ function Technologies() {
               architecture and the team to build it.
             </p>
             <div className="joctech-cta-actions">
-              <Link to="/contact" className="joctech-btn">
+              <TrackedLink
+                to="/contact" className="joctech-btn"
+                track={{ type: "contact", name: "schedule_consultation", location: CTA_LOCATION.CONTENT_SECTION }}
+              >
                 Schedule Consultation <ArrowRight size={17} />
-              </Link>
+              </TrackedLink>
               <Link to="/services" className="joctech-btn-ghost">
                 Explore Services
               </Link>
